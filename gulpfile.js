@@ -12,15 +12,11 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     svgmin = require('gulp-svgmin'),
     htmlmin = require('gulp-htmlmin'),
-    rename = require('gulp-rename'),
     clean = require('gulp-clean'),
     notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
     connect = require('gulp-connect'),
     nodemon = require('gulp-nodemon'),
-    open = require('gulp-open'),
-    mocha = require('gulp-mocha'),
-    livereload = require('gulp-livereload');
+    mocha = require('gulp-mocha');
 
 
 // Configuration Directories
@@ -30,14 +26,15 @@ var dir = {
     dist: 'dist'
 };
 
-gulp.task('connect:dev', connect.server({
-    root: [dir.client],
-    livereload: true,
-    port: 8005,
-    open: {
-        file: 'index.html',
-    }
-}));
+gulp.task('connect:dev', function() {
+    connect.server({
+        root: [dir.client],
+        livereload: {
+            port: LIVERELOAD_PORT
+        },
+        port: 8005
+    });
+});
 
 // gulp.task('connect:production', connect.server({
 //     root: [dir.dist],
@@ -129,7 +126,7 @@ gulp.task('html', function() {
         .pipe(notify({ message: 'HTML task complete' }));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['app', 'client'], function() {
 
     // Watch styles
     gulp.watch(dir.client + '/styles/{,*/}*.{sass,scss}', ['styles']);
@@ -177,9 +174,14 @@ gulp.task('test', ['lint', 'mocha']);
 gulp.task('app', function() {
     return nodemon({
             script: 'server.js',
-            ignoredFiles: ['README.md', 'node_modules/**'],
+            ignore: [
+                'README.md', 
+                'node_modules/**',
+                dir.client,
+                dir.dist
+            ],
             watchedExtensions: ['js'],
-            watchedFolders: ['app', 'config'],
+            watchedFolders: [dir.app, 'config'],
             debug: true,
             delayTime: 1,
             env: {
@@ -190,7 +192,7 @@ gulp.task('app', function() {
 });
 
 /** Build it all up and serve it */
-gulp.task('default', ['connect:dev', 'app', 'client', 'watch']);
+gulp.task('default', ['connect:dev', 'watch']);
 
 // /** Build it all up and serve the production version */
 // gulp.task('serve', ['connect:production', 'app', 'client', 'watch']);

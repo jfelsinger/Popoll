@@ -1,34 +1,37 @@
 var express = require('express'),
-    mongoStore = require('connect-mongo')(express),
-    config = require('./config');
+    morgan = require('morgan'),
+    session = require('express-session'),
+    cookieParser = require('cookie-parser'),
+    methodOverride = require('method-override'),
+    mongoStore = require('connect-mongo')(session);
+
+var config = require('./config');
 
 module.exports = function(app) {
     app.set('showStackError', true);
 
     // No logger on test environment
     if (process.env.NODE_ENV !== 'test') {
-        app.use(express.logger('dev'));
+        app.use(morgan('dev'));
     }
 
     app.enable("jsonp callback");
 
-    app.configure(function() {
-        app.use(express.cookieParser());
-        app.use(express.methodOverride());
+    app.use(cookieParser());
+    app.use(methodOverride());
 
-        // express/mongo setup for 
-        // storing session data
-        app.use(express.session({
-            secret: 'VENM',
-            store: new mongoStore({
-                url: config.db,
-                collection: 'sessions'
-            })
-        }));
+    // express-session/mongo setup for 
+    // storing session data
+    app.use(session({
+        secret: 'VENM',
+        store: new mongoStore({
+            url: config.db,
+            collection: 'sessions'
+        })
+    }));
 
-        // Continue to routing, 
-        app.use(app.router);
-    });
+    // Continue to routing, 
+    require('./routes')(app);
 
     // 500 Error
     app.use(function(err, req, res, next) {
