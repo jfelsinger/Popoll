@@ -2,15 +2,12 @@
 
 /* TEAM */
 
-    <role: <name> 
-    twittter: @<twitter>
-    from: <from>
+    Developer: Joel Felsinger
+    twittter: @jfelsinger
+    from: Florida
 
 /* THANKS */
 
-    <role: <name> 
-    twittter: @<twitter>
-    from: <from>
 
 /* SITE */
     Languages: English
