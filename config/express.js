@@ -23,7 +23,7 @@ module.exports = function(app) {
     // express-session/mongo setup for 
     // storing session data
     app.use(session({
-        secret: 'VENM',
+        secret: 'Popoll',
         store: new mongoStore({
             url: config.db,
             collection: 'sessions'

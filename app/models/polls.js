@@ -6,7 +6,7 @@ var PollSchema = new Schema({
     question: { type: String, default: '', trim: true },
     desc: { type: String, default: '', trim: true },
     user: { type: Schema.ObjectId, ref: 'User' },
-    options: [{
+    choices: [{
         name: { type: String, default: '' },
         votes: [{ 
             user: { type: Schema.ObjectId, ref: 'User' },
@@ -19,10 +19,6 @@ var PollSchema = new Schema({
         createdAt: { type: Date, default: Date.now }
     }],
     public: Boolean,
-});
-
-PollSchema.pre('save', function(next) {
-    next();
 });
 
 PollSchema
@@ -47,21 +43,21 @@ PollSchema.methods = {
     },
 
     addOption: function(optionName, cb) {
-        this.options.push({
+        this.choices.push({
             name: optionName
         });
         this.save(cb);
     },
 
     deleteComment: function(optionId, cb) {
-        this.options.id(optionId).remove();
+        this.choices.id(optionId).remove();
         this.save(cb);
     },
 
     vote: function(optionId, user, priority, cb) {
-        var option = this.options.id(optionId);
+        var option = this.choices.id(optionId);
 
-        options.votes.push({
+        choices.votes.push({
             user: user._id,
             priority: priority
         });
@@ -71,25 +67,31 @@ PollSchema.methods = {
 };
 
 PollSchema.statistics = {
+    /*
     load: function(id , cb) {
-        this.findOne({ _id: id })
+        this.findById(id)
             .populate('user', 'name email username')
             .populate('comments.user', 'name email username')
-            .populate('options.votes.user', 'name email username')
+            .populate('choices.votes.user', 'name email username')
             .exec(cb);
     },
 
     userPolls: function(id, cb) {
-        this.find({ "user": ObjectId(id) })
-            .toArray()
+        this.find({ 'user': ObjectId(id) })
+            .populate('user', 'name email username')
+            .populate('comments.user', 'name email username')
+            .populate('choices.votes.user', 'name email username')
             .exec(cb);
     },
 
     publicPolls: function(cb) {
-        this.find({ "public": true })
-            .toArray()
+        this.find({ 'public': true })
+            .populate('user', 'name email username')
+            .populate('comments.user', 'name email username')
+            .populate('choices.votes.user', 'name email username')
             .exec(cb);
     },
+    */
 };
 
 mongoose.model('Poll', PollSchema);

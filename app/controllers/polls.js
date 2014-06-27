@@ -5,11 +5,26 @@ var mongoose = require('mongoose'),
 
 // Polls
 // ------------------------------------------------
+exports.getPublic = function(req, res) {
+    Poll.find({ 'public': true })
+        .populate('user', 'name email username')
+        .populate('comments.user', 'name email username')
+        .populate('choices.votes.user', 'name email username')
+        .exec(function(err, polls) {
+            if (err) res.send(500, err);
+            res.json(polls);
+        });
+};
+
 exports.get = function(req, res) {
-    Poll.findById(req.params.poll_id, function(err, poll) {
-        if (err) res.send(500, err);
-        res.json(poll);
-    });
+    Poll.findById(req.params.poll_id)
+        .populate('user', 'name email username')
+        .populate('comments.user', 'name email username')
+        .populate('choices.votes.user', 'name email username')
+        .exec(function(err, poll) {
+            if (err) res.send(500, err);
+            res.json(poll);
+        });
 };
 
 exports.post = function(req, res) {
@@ -38,7 +53,7 @@ exports.put = function(req, res) {
     });
 };
 
-exports.delete = function(req, res) {
+exports.del = function(req, res) {
     Poll.remove({ _id: req.params.poll_id }, function(err, poll) {
         if (err) res.send(500, err);
 
@@ -48,34 +63,34 @@ exports.delete = function(req, res) {
 
 
 
-// Polls->Options
+// Polls->Choices
 // ------------------------------------------------
-var options = function(req, res) {
-    Poll.findById(req.params.poll_id, 'options')
-        .populate('options.votes.user', 'name email username')
+var choices = function(req, res) {
+    Poll.findById(req.params.poll_id, 'choices')
+        .populate('choices.votes.user', 'name email username')
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            res.json(poll.options);
+            res.json(poll.choices);
         });
 };
 
-options.get = function(req, res) {
-    Poll.findById(req.params.poll_id, 'options')
-        .populate('options.votes.user', 'name email username')
+choices.get = function(req, res) {
+    Poll.findById(req.params.poll_id, 'choices')
+        .populate('choices.votes.user', 'name email username')
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            var option = poll.options.id(req.params.object_id);
+            var option = poll.choices.id(req.params.object_id);
 
             if (!option) res.send(404, 'Option not found with id ' + req.params.object_id);
             res.json(option);
         });
 };
 
-options.post = function(req, res) {
-    Poll.findById(req.params.poll_id, 'options')
-        .populate('options.votes.user', 'name email username')
+choices.post = function(req, res) {
+    Poll.findById(req.params.poll_id, 'choices')
+        .populate('choices.votes.user', 'name email username')
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
@@ -87,13 +102,13 @@ options.post = function(req, res) {
         });
 };
 
-options.put = function(req, res) {
-    Poll.findById(req.params.poll_id, 'options')
-        .populate('options.votes.user', 'name email username')
-        .exec(nction(err, poll) {
+choices.put = function(req, res) {
+    Poll.findById(req.params.poll_id, 'choices')
+        .populate('choices.votes.user', 'name email username')
+        .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            var option = poll.options.id(req.params.option_id);
+            var option = poll.choices.id(req.params.option_id);
 
             option.name = req.body.name;
 
@@ -104,13 +119,13 @@ options.put = function(req, res) {
         });
 };
 
-options.del = function(req, res) {
-    Poll.findById(req.params.poll_id, 'options')
-        .populate('options.votes.user', 'name email username')
+choices.del = function(req, res) {
+    Poll.findById(req.params.poll_id, 'choices')
+        .populate('choices.votes.user', 'name email username')
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            poll.options.id(req.params.option_id).remove();
+            poll.choices.id(req.params.option_id).remove();
 
             poll.save(function(err) {
                 if (err) res.send(500, err);
@@ -119,7 +134,7 @@ options.del = function(req, res) {
         });
 };
 
-exports.options = options;
+exports.choices = choices;
 
 
 // Polls->Comments
