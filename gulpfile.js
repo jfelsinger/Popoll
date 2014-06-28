@@ -4,7 +4,7 @@ var LIVERELOAD_PORT = 4500;
 var gulp = require('gulp'),
     bower = require('gulp-bower'),
     browserify = require('gulp-browserify'),
-    sass = require('gulp-sass'),
+    compass = require('gulp-compass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
@@ -57,7 +57,11 @@ gulp.task('bower', function() {
 
 gulp.task('styles', function() {
     return gulp.src(dir.client + '/styles/*.{scss,sass}')
-        .pipe(sass({style: 'expanded'}))
+        .pipe(compass({
+            style: 'expanded',
+            css: dir.client + '/styles',
+            sass: dir.client + '/styles',
+        }))
         .pipe(autoprefixer())
         .pipe(gulp.dest(dir.client + '/styles'))
 
@@ -94,6 +98,14 @@ gulp.task('images', function() {
 
         .pipe(connect.reload())
         .pipe(notify({ message: 'Images task complete' }));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src(dir.client + '/fonts/{,*/}*.{eot,ttf,woff,svg}')
+        .pipe(gulp.dest(dir.dist + '/fonts/'))
+        .pipe(gulp.dest(dir.client + '/dist/fonts/'))
+        .pipe(connect.reload())
+        .pipe(notify({ message: 'Fonts task complete' }));
 });
 
 gulp.task('svg', function() {
@@ -140,6 +152,9 @@ gulp.task('watch', ['app', 'client'], function() {
     // Watch image files
     gulp.watch(dir.client + '/images/{,*/}*.{png,jpg,jpeg}', ['images']);
 
+    // Watch font files
+    gulp.watch(dir.client + '/fonts/{,*/}*.{svg,eot,ttf,woff}', ['fonts']);
+
     // Watch svg files
     gulp.watch(dir.client + '/images/{,*/}*.svg', ['svg']);
 
@@ -166,7 +181,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('client', ['clean', 'bower'], function() {
-    gulp.start('styles', 'clientScripts', 'images', 'svg', 'html');
+    gulp.start('styles', 'clientScripts', 'images', 'fonts', 'svg', 'html');
 });
 
 gulp.task('test', ['lint', 'mocha']);

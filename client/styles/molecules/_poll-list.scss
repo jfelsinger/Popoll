@@ -1,0 +1,88 @@
+/*-------------------------------------*\
+    POLL LIST
+\*-------------------------------------*/
+
+/**
+ * Poll List 
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+    
+    <ul>
+        <li>
+            <section>
+            </section>
+        </li>
+    </ul>
+    
+ * 
+ */ 
+ 
+
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+
+%poll-list {
+}
+
+    %poll-list__item {
+        @extend %clear-fix;
+
+        color: #fff;
+        padding: unit(.25);
+        margin-bottom: unit(.5);
+        background: #e95b40;
+
+        @include border-radius(4px);
+        @include box-shadow(0 1px #cacaca);
+    }
+
+        %poll-list__question {
+            padding: 0;
+            margin: 0;
+        }
+
+        %poll-list__answer {
+            font-weight: normal;
+            padding: 0;
+            margin: 0;
+        }
+
+        %poll-list__actions {
+            color: #333;
+        }
+
+            %poll-list__time {
+                color: #fff;
+                padding: unit(.0625) unit(.15);
+                background: #ea934e;
+
+                @include border-radius(3px);
+                @include box-shadow(0 1px #ea930e);
+            }
+
+            %poll-list__watch {
+                padding: unit(.25);
+            }
+
+ 
+ 
+
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+ 
+ .poll-list { @extend %poll-list !optional; }
+     .poll-list__item { @extend %poll-list__item !optional; }
+         .poll-list__question { @extend %poll-list__question !optional; }
+         .poll-list__answer   { @extend %poll-list__answer   !optional; }
+         .poll-list__actions  { @extend %poll-list__actions  !optional; }
+             .poll-list__time  { @extend %poll-list__time  !optional; }
+             .poll-list__watch { @extend %poll-list__watch !optional; }
+ 
+ 
+ 

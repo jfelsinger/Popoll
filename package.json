@@ -1,50 +1,50 @@
 {
-    "name": "popoll",
-    "description": "",
-    "version": "0.0.0",
-    "author": "",
-    "scripts": {
-        "start": "node node_modules/grunt-cli/bin/grunt serve"
-    },
-    "dependencies": {
-        "vue": "latest",
-        "express": "^4.3.1",
-        "express-session": "^1.2.1",
-        "cookie-parser": "^1.1.0",
-        "method-override": "^1.0.2",
-        "morgan": "^1.1.1",
-        "mongoose": "^3.8.11",
-        "connect-mongo": "latest",
-        "gulp": "^3.6.2",
-        "browserify": "^4.1.6",
-        "forever": "latest",
-        "underscore": "^1.6.0",
-        "async": "latest"
-    },
-    "devDependencies": {
-        "bower": "^1.3.3",
-        "jshint-stylish": "latest",
-        "connect-livereload": "latest",
-        "gulp": "^3.6.2",
-        "gulp-bower": "latest",
-        "gulp-svgmin": "latest",
-        "gulp-browserify": "latest",
-        "gulp-sass": "latest",
-        "gulp-autoprefixer": "latest",
-        "gulp-minify-css": "latest",
-        "gulp-jshint": "latest",
-        "gulp-uglify": "latest",
-        "gulp-connect": "latest",
-        "gulp-imagemin": "latest",
-        "gulp-htmlmin": "latest",
-        "gulp-connect": "latest",
-        "gulp-nodemon": "latest",
-        "gulp-clean": "latest",
-        "gulp-notify": "latest",
-        "gulp-cache": "latest",
-        "gulp-mocha": "latest"
-    },
-    "engines": {
-        "node": ">=0.10.0"
-    }
+  "name": "popoll",
+  "description": "",
+  "version": "0.0.0",
+  "author": "",
+  "scripts": {
+    "start": "node node_modules/grunt-cli/bin/grunt serve"
+  },
+  "dependencies": {
+    "vue": "latest",
+    "express": "^4.3.1",
+    "express-session": "^1.2.1",
+    "cookie-parser": "^1.1.0",
+    "method-override": "^1.0.2",
+    "morgan": "^1.1.1",
+    "mongoose": "^3.8.11",
+    "connect-mongo": "latest",
+    "gulp": "^3.6.2",
+    "browserify": "^4.1.6",
+    "forever": "latest",
+    "underscore": "^1.6.0",
+    "async": "latest"
+  },
+  "devDependencies": {
+    "bower": "^1.3.3",
+    "connect-livereload": "latest",
+    "gulp": "^3.6.2",
+    "gulp-autoprefixer": "latest",
+    "gulp-bower": "latest",
+    "gulp-browserify": "latest",
+    "gulp-cache": "latest",
+    "gulp-clean": "latest",
+    "gulp-compass": "^1.1.9",
+    "gulp-connect": "latest",
+    "gulp-htmlmin": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-jshint": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-mocha": "latest",
+    "gulp-nodemon": "latest",
+    "gulp-notify": "latest",
+    "gulp-sass": "latest",
+    "gulp-svgmin": "latest",
+    "gulp-uglify": "latest",
+    "jshint-stylish": "latest"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
 }

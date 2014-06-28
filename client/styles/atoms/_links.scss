@@ -1,0 +1,67 @@
+/*-------------------------------------*\
+    LINKS
+\*-------------------------------------*/
+
+/**
+ * Links 
+ * 
+ **
+ * Base
+ * Isotopes
+ * Implementation
+ * 
+ * 
+    
+ * 
+ */ 
+ 
+
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+
+%link {
+    text-decoration: underline;
+}
+
+
+
+
+
+/*-------------------------------------*\
+    Isotopes
+\*-------------------------------------*/
+
+%link--plain {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+%plain--links {
+    %link,
+    a { @extend %link--plain !optional; }
+}
+
+
+
+
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+
+/*---   Base   ---*/
+
+a { @extend %link !optional; }
+
+
+
+/*---   Isotopes   ---*/
+
+.link--plain { @extend %link--plain !optional; }
+.plain--links { @extend %plain--links !optional; }
+
+
+
+
+

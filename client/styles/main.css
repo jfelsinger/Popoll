@@ -1,4 +1,2504 @@
-* {
+@charset "UTF-8";
+/*-------------------------------------*\
+    MAIN
+\*-------------------------------------*/
+/**
+ * Main.scss
+ * 
+ * This is the root style file, where everything
+ * else stems from.
+ *
+ **
+ * Contents         - You are here
+ * 
+ * Imports          - All the file imports
+ *  - quarks
+ *  - utilities
+ *  - atoms
+ *  - molecules
+ *  - pages
+ *  - shame
+ * 
+ * 
+ */
+/*-------------------------------------*\
+    Imports
+\*-------------------------------------*/
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 9, _normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, _normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 32, _normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 52, _normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 65, _normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 75, _normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 87, _normalize.scss */
+a {
+  background: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 95, _normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 107, _normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 115, _normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 124, _normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 133, _normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 142, _normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 151, _normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 159, _normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 167, _normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 171, _normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 182, _normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 190, _normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 201, _normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 209, _normalize.scss */
+hr {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 219, _normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 227, _normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 250, _normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 264, _normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 275, _normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 288, _normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 300, _normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 309, _normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 320, _normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 332, _normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 344, _normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 355, _normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 368, _normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 377, _normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 388, _normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 397, _normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 406, _normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 417, _normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 422, _normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/*------------------------------------*\
+    $CSSWIZARDRY-GRIDS
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * INTRODUCTION.........How the grid system works.
+ * VARIABLES............Your settings.
+ * MIXINS...............Library mixins.
+ * GRID SETUP...........Build the grid structure.
+ * WIDTHS...............Build our responsive widths around our breakpoints.
+ * PUSH.................Push classes.
+ * PULL.................Pull classes.
+ */
+/*------------------------------------*\
+    $INTRODUCTION
+\*------------------------------------*/
+/**
+ * csswizardry grids provides you with widths to suit a number of breakpoints
+ * designed around devices of a size you specify. Out of the box, csswizardry
+ * grids caters to the following types of device:
+ *
+ * palm     --  palm-based devices, like phones and small tablets
+ * lap      --  lap-based devices, like iPads or laptops
+ * portable --  all of the above
+ * desk     --  stationary devices, like desktop computers
+ * regular  --  any/all types of device
+ *
+ * These namespaces are then used in the library to give you the ability to
+ * manipulate your layouts based around them, for example:
+ *
+   <div class="grid__item  one-whole  lap--one-half  desk--one-third">
+ *
+ * This would give you a grid item which is 100% width unless it is on a lap
+ * device, at which point it become 50% wide, or it is on a desktop device, at
+ * which point it becomes 33.333% width.
+ *
+ * csswizardry grids also has push and pull classes which allow you to nudge
+ * grid items left and right by a defined amount. These follow the same naming
+ * convention as above, but are prepended by either `push--` or `pull--`, for
+ * example:
+ *
+   `class="grid__item  one-half  push--one-half"`
+ *
+ * This would give you a grid item which is 50% width and pushed over to the
+ * right by 50%.
+ *
+ * All classes in csswizardry grids follow this patten, so you should fairly
+ * quickly be able to piece together any combinations you can imagine, for
+ * example:
+ *
+   `class="grid__item  one-whole  lap--one-half  desk--one-third  push--desk--one-third"`
+ *
+   `class="grid__item  one-quarter  palm--one-half  push--palm--one-half"`
+ *
+   `class="grid__item  palm--one-third  desk--five-twelfths"`
+ */
+/*------------------------------------*\
+    $VARIABLES
+\*------------------------------------*/
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to ‘false’:
+ */
+/**
+ * Is this build mobile first? Setting to ‘true’ means that all grids will be
+ * 100% width if you do not apply a more specific class to them.
+ */
+/**
+ * Set the spacing between your grid items.
+ */
+/**
+ * Would you like Sass’ silent classes, or regular CSS classes?
+ */
+/**
+ * Would you like push and pull classes enabled?
+ */
+/**
+ * Using `inline-block` means that the grid items need their whitespace removing
+ * in order for them to work correctly. Set the following to true if you are
+ * going to achieve this by manually removing/commenting out any whitespace in
+ * your HTML yourself.
+ *
+ * Setting this to false invokes a hack which cannot always be guaranteed,
+ * please see the following for more detail:
+ *
+ * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+ * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+/**
+ * Define your breakpoints. The first value is the prefix that shall be used for
+ * your classes (e.g. `.palm--one-half`), the second value is the media query
+ * that the breakpoint fires at.
+ */
+/**
+ * Define which namespaced breakpoints you would like to generate for each of
+ * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * you only need a new width breakpoint at mobile sizes. It allows you to only
+ * compile as much CSS as you need. All are turned on by default, but you can
+ * add and remove breakpoints at will.
+ *
+ * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+ * have been set to ‘true’.
+ */
+/**
+ * You do not need to edit anything from this line onward; csswizardry-grids is
+ * good to go. Happy griddin’!
+ */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * These mixins are for the library to use only, you should not need to modify
+ * them at all.
+ *
+ * Enclose a block of code with a media query as named in `$breakpoints`.
+ */
+/**
+ * Drop relative positioning into silent classes which can’t take advantage of
+ * the `[class*="push--"]` and `[class*="pull--"]` selectors.
+ */
+/*------------------------------------*\
+    $GRID SETUP
+\*------------------------------------*/
+/**
+ * 1. Allow the grid system to be used on lists.
+ * 2. Remove any margins and paddings that might affect the grid system.
+ * 3. Apply a negative `margin-left` to negate the columns’ gutters.
+ */
+/* line 213, _csswizardry-grids.scss */
+.grid {
+  list-style: none;
+  /* [1] */
+  margin: 0;
+  /* [2] */
+  padding: 0;
+  /* [2] */
+  margin-left: -24px;
+  /* [3] */
+}
+
+/**
+ * 1. Cause columns to stack side-by-side.
+ * 2. Space columns apart.
+ * 3. Align columns to the tops of each other.
+ * 4. Full-width unless told to behave otherwise.
+ * 5. Required to combine fluid widths and fixed gutters.
+ */
+/* line 239, _csswizardry-grids.scss */
+.grid__item {
+  display: inline-block;
+  /* [1] */
+  padding-left: 24px;
+  /* [2] */
+  vertical-align: top;
+  /* [3] */
+  width: 100%;
+  /* [4] */
+  -webkit-box-sizing: border-box;
+  /* [5] */
+  -moz-box-sizing: border-box;
+  /* [5] */
+  box-sizing: border-box;
+  /* [5] */
+}
+
+/**
+ * Reversed grids allow you to structure your source in the opposite order to
+ * how your rendered layout will appear. Extends `.grid`.
+ */
+/* line 260, _csswizardry-grids.scss */
+.grid--rev {
+  direction: rtl;
+  text-align: left;
+}
+/* line 264, _csswizardry-grids.scss */
+.grid--rev > .grid__item {
+  direction: ltr;
+  text-align: left;
+}
+
+/**
+ * Gutterless grids have all the properties of regular grids, minus any spacing.
+ * Extends `.grid`.
+ */
+/* line 275, _csswizardry-grids.scss */
+.grid--full {
+  margin-left: 0;
+}
+/* line 278, _csswizardry-grids.scss */
+.grid--full > .grid__item {
+  padding-left: 0;
+}
+
+/**
+ * Align the entire grid to the right. Extends `.grid`.
+ */
+/* line 287, _csswizardry-grids.scss */
+.grid--right {
+  text-align: right;
+}
+/* line 290, _csswizardry-grids.scss */
+.grid--right > .grid__item {
+  text-align: left;
+}
+
+/**
+ * Centered grids align grid items centrally without needing to use push or pull
+ * classes. Extends `.grid`.
+ */
+/* line 300, _csswizardry-grids.scss */
+.grid--center {
+  text-align: center;
+}
+/* line 303, _csswizardry-grids.scss */
+.grid--center > .grid__item {
+  text-align: left;
+}
+
+/**
+ * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
+ * `.grid`.
+ */
+/* line 315, _csswizardry-grids.scss */
+.grid--middle > .grid__item {
+  vertical-align: middle;
+}
+
+/* line 322, _csswizardry-grids.scss */
+.grid--bottom > .grid__item {
+  vertical-align: bottom;
+}
+
+/**
+ * Create grids with narrower gutters. Extends `.grid`.
+ */
+/* line 331, _csswizardry-grids.scss */
+.grid--narrow {
+  margin-left: -12px;
+}
+/* line 334, _csswizardry-grids.scss */
+.grid--narrow > .grid__item {
+  padding-left: 12px;
+}
+
+/**
+ * Create grids with wider gutters. Extends `.grid`.
+ */
+/* line 343, _csswizardry-grids.scss */
+.grid--wide {
+  margin-left: -48px;
+}
+/* line 346, _csswizardry-grids.scss */
+.grid--wide > .grid__item {
+  padding-left: 48px;
+}
+
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Create our width classes, prefixed by the specified namespace.
+ */
+/**
+ * Our regular, non-responsive width classes.
+ */
+/**
+ * Whole
+ */
+/* line 367, _csswizardry-grids.scss */
+.one-whole {
+  width: 100%;
+}
+
+/**
+ * Halves
+ */
+/* line 373, _csswizardry-grids.scss */
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths {
+  width: 50%;
+}
+
+/**
+ * Thirds
+ */
+/* line 379, _csswizardry-grids.scss */
+.one-third, .two-sixths, .four-twelfths {
+  width: 33.333%;
+}
+
+/* line 380, _csswizardry-grids.scss */
+.two-thirds, .four-sixths, .eight-twelfths {
+  width: 66.666%;
+}
+
+/**
+ * Quarters
+ */
+/* line 386, _csswizardry-grids.scss */
+.one-quarter, .two-eighths, .three-twelfths {
+  width: 25%;
+}
+
+/* line 388, _csswizardry-grids.scss */
+.three-quarters, .six-eighths, .nine-twelfths {
+  width: 75%;
+}
+
+/**
+ * Fifths
+ */
+/* line 394, _csswizardry-grids.scss */
+.one-fifth, .two-tenths {
+  width: 20%;
+}
+
+/* line 395, _csswizardry-grids.scss */
+.two-fifths, .four-tenths {
+  width: 40%;
+}
+
+/* line 396, _csswizardry-grids.scss */
+.three-fifths, .six-tenths {
+  width: 60%;
+}
+
+/* line 397, _csswizardry-grids.scss */
+.four-fifths, .eight-tenths {
+  width: 80%;
+}
+
+/**
+ * Sixths
+ */
+/* line 403, _csswizardry-grids.scss */
+.one-sixth, .two-twelfths {
+  width: 16.666%;
+}
+
+/* line 407, _csswizardry-grids.scss */
+.five-sixths, .ten-twelfths {
+  width: 83.333%;
+}
+
+/**
+ * Eighths
+ */
+/* line 413, _csswizardry-grids.scss */
+.one-eighth {
+  width: 12.5%;
+}
+
+/* line 415, _csswizardry-grids.scss */
+.three-eighths {
+  width: 37.5%;
+}
+
+/* line 417, _csswizardry-grids.scss */
+.five-eighths {
+  width: 62.5%;
+}
+
+/* line 419, _csswizardry-grids.scss */
+.seven-eighths {
+  width: 87.5%;
+}
+
+/**
+ * Tenths
+ */
+/* line 425, _csswizardry-grids.scss */
+.one-tenth {
+  width: 10%;
+}
+
+/* line 427, _csswizardry-grids.scss */
+.three-tenths {
+  width: 30%;
+}
+
+/* line 431, _csswizardry-grids.scss */
+.seven-tenths {
+  width: 70%;
+}
+
+/* line 433, _csswizardry-grids.scss */
+.nine-tenths {
+  width: 90%;
+}
+
+/**
+ * Twelfths
+ */
+/* line 439, _csswizardry-grids.scss */
+.one-twelfth {
+  width: 8.333%;
+}
+
+/* line 443, _csswizardry-grids.scss */
+.five-twelfths {
+  width: 41.666%;
+}
+
+/* line 445, _csswizardry-grids.scss */
+.seven-twelfths {
+  width: 58.333%;
+}
+
+/* line 449, _csswizardry-grids.scss */
+.eleven-twelfths {
+  width: 91.666%;
+}
+
+/**
+ * Our responsive classes, if we have enabled them.
+ */
+@media only screen and (max-width: 480px) {
+  /**
+   * Whole
+   */
+  /* line 367, _csswizardry-grids.scss */
+  .palm--one-whole {
+    width: 100%;
+  }
+
+  /**
+   * Halves
+   */
+  /* line 373, _csswizardry-grids.scss */
+  .palm--one-half, .palm--two-quarters, .palm--three-sixths, .palm--four-eighths, .palm--five-tenths, .palm--six-twelfths {
+    width: 50%;
+  }
+
+  /**
+   * Thirds
+   */
+  /* line 379, _csswizardry-grids.scss */
+  .palm--one-third, .palm--two-sixths, .palm--four-twelfths {
+    width: 33.333%;
+  }
+
+  /* line 380, _csswizardry-grids.scss */
+  .palm--two-thirds, .palm--four-sixths, .palm--eight-twelfths {
+    width: 66.666%;
+  }
+
+  /**
+   * Quarters
+   */
+  /* line 386, _csswizardry-grids.scss */
+  .palm--one-quarter, .palm--two-eighths, .palm--three-twelfths {
+    width: 25%;
+  }
+
+  /* line 388, _csswizardry-grids.scss */
+  .palm--three-quarters, .palm--six-eighths, .palm--nine-twelfths {
+    width: 75%;
+  }
+
+  /**
+   * Fifths
+   */
+  /* line 394, _csswizardry-grids.scss */
+  .palm--one-fifth, .palm--two-tenths {
+    width: 20%;
+  }
+
+  /* line 395, _csswizardry-grids.scss */
+  .palm--two-fifths, .palm--four-tenths {
+    width: 40%;
+  }
+
+  /* line 396, _csswizardry-grids.scss */
+  .palm--three-fifths, .palm--six-tenths {
+    width: 60%;
+  }
+
+  /* line 397, _csswizardry-grids.scss */
+  .palm--four-fifths, .palm--eight-tenths {
+    width: 80%;
+  }
+
+  /**
+   * Sixths
+   */
+  /* line 403, _csswizardry-grids.scss */
+  .palm--one-sixth, .palm--two-twelfths {
+    width: 16.666%;
+  }
+
+  /* line 407, _csswizardry-grids.scss */
+  .palm--five-sixths, .palm--ten-twelfths {
+    width: 83.333%;
+  }
+
+  /**
+   * Eighths
+   */
+  /* line 413, _csswizardry-grids.scss */
+  .palm--one-eighth {
+    width: 12.5%;
+  }
+
+  /* line 415, _csswizardry-grids.scss */
+  .palm--three-eighths {
+    width: 37.5%;
+  }
+
+  /* line 417, _csswizardry-grids.scss */
+  .palm--five-eighths {
+    width: 62.5%;
+  }
+
+  /* line 419, _csswizardry-grids.scss */
+  .palm--seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+   * Tenths
+   */
+  /* line 425, _csswizardry-grids.scss */
+  .palm--one-tenth {
+    width: 10%;
+  }
+
+  /* line 427, _csswizardry-grids.scss */
+  .palm--three-tenths {
+    width: 30%;
+  }
+
+  /* line 431, _csswizardry-grids.scss */
+  .palm--seven-tenths {
+    width: 70%;
+  }
+
+  /* line 433, _csswizardry-grids.scss */
+  .palm--nine-tenths {
+    width: 90%;
+  }
+
+  /**
+   * Twelfths
+   */
+  /* line 439, _csswizardry-grids.scss */
+  .palm--one-twelfth {
+    width: 8.333%;
+  }
+
+  /* line 443, _csswizardry-grids.scss */
+  .palm--five-twelfths {
+    width: 41.666%;
+  }
+
+  /* line 445, _csswizardry-grids.scss */
+  .palm--seven-twelfths {
+    width: 58.333%;
+  }
+
+  /* line 449, _csswizardry-grids.scss */
+  .palm--eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
+  /**
+   * Whole
+   */
+  /* line 367, _csswizardry-grids.scss */
+  .lap--one-whole {
+    width: 100%;
+  }
+
+  /**
+   * Halves
+   */
+  /* line 373, _csswizardry-grids.scss */
+  .lap--one-half, .lap--two-quarters, .lap--three-sixths, .lap--four-eighths, .lap--five-tenths, .lap--six-twelfths {
+    width: 50%;
+  }
+
+  /**
+   * Thirds
+   */
+  /* line 379, _csswizardry-grids.scss */
+  .lap--one-third, .lap--two-sixths, .lap--four-twelfths {
+    width: 33.333%;
+  }
+
+  /* line 380, _csswizardry-grids.scss */
+  .lap--two-thirds, .lap--four-sixths, .lap--eight-twelfths {
+    width: 66.666%;
+  }
+
+  /**
+   * Quarters
+   */
+  /* line 386, _csswizardry-grids.scss */
+  .lap--one-quarter, .lap--two-eighths, .lap--three-twelfths {
+    width: 25%;
+  }
+
+  /* line 388, _csswizardry-grids.scss */
+  .lap--three-quarters, .lap--six-eighths, .lap--nine-twelfths {
+    width: 75%;
+  }
+
+  /**
+   * Fifths
+   */
+  /* line 394, _csswizardry-grids.scss */
+  .lap--one-fifth, .lap--two-tenths {
+    width: 20%;
+  }
+
+  /* line 395, _csswizardry-grids.scss */
+  .lap--two-fifths, .lap--four-tenths {
+    width: 40%;
+  }
+
+  /* line 396, _csswizardry-grids.scss */
+  .lap--three-fifths, .lap--six-tenths {
+    width: 60%;
+  }
+
+  /* line 397, _csswizardry-grids.scss */
+  .lap--four-fifths, .lap--eight-tenths {
+    width: 80%;
+  }
+
+  /**
+   * Sixths
+   */
+  /* line 403, _csswizardry-grids.scss */
+  .lap--one-sixth, .lap--two-twelfths {
+    width: 16.666%;
+  }
+
+  /* line 407, _csswizardry-grids.scss */
+  .lap--five-sixths, .lap--ten-twelfths {
+    width: 83.333%;
+  }
+
+  /**
+   * Eighths
+   */
+  /* line 413, _csswizardry-grids.scss */
+  .lap--one-eighth {
+    width: 12.5%;
+  }
+
+  /* line 415, _csswizardry-grids.scss */
+  .lap--three-eighths {
+    width: 37.5%;
+  }
+
+  /* line 417, _csswizardry-grids.scss */
+  .lap--five-eighths {
+    width: 62.5%;
+  }
+
+  /* line 419, _csswizardry-grids.scss */
+  .lap--seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+   * Tenths
+   */
+  /* line 425, _csswizardry-grids.scss */
+  .lap--one-tenth {
+    width: 10%;
+  }
+
+  /* line 427, _csswizardry-grids.scss */
+  .lap--three-tenths {
+    width: 30%;
+  }
+
+  /* line 431, _csswizardry-grids.scss */
+  .lap--seven-tenths {
+    width: 70%;
+  }
+
+  /* line 433, _csswizardry-grids.scss */
+  .lap--nine-tenths {
+    width: 90%;
+  }
+
+  /**
+   * Twelfths
+   */
+  /* line 439, _csswizardry-grids.scss */
+  .lap--one-twelfth {
+    width: 8.333%;
+  }
+
+  /* line 443, _csswizardry-grids.scss */
+  .lap--five-twelfths {
+    width: 41.666%;
+  }
+
+  /* line 445, _csswizardry-grids.scss */
+  .lap--seven-twelfths {
+    width: 58.333%;
+  }
+
+  /* line 449, _csswizardry-grids.scss */
+  .lap--eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  /**
+   * Whole
+   */
+  /* line 367, _csswizardry-grids.scss */
+  .portable--one-whole {
+    width: 100%;
+  }
+
+  /**
+   * Halves
+   */
+  /* line 373, _csswizardry-grids.scss */
+  .portable--one-half, .portable--two-quarters, .portable--three-sixths, .portable--four-eighths, .portable--five-tenths, .portable--six-twelfths {
+    width: 50%;
+  }
+
+  /**
+   * Thirds
+   */
+  /* line 379, _csswizardry-grids.scss */
+  .portable--one-third, .portable--two-sixths, .portable--four-twelfths {
+    width: 33.333%;
+  }
+
+  /* line 380, _csswizardry-grids.scss */
+  .portable--two-thirds, .portable--four-sixths, .portable--eight-twelfths {
+    width: 66.666%;
+  }
+
+  /**
+   * Quarters
+   */
+  /* line 386, _csswizardry-grids.scss */
+  .portable--one-quarter, .portable--two-eighths, .portable--three-twelfths {
+    width: 25%;
+  }
+
+  /* line 388, _csswizardry-grids.scss */
+  .portable--three-quarters, .portable--six-eighths, .portable--nine-twelfths {
+    width: 75%;
+  }
+
+  /**
+   * Fifths
+   */
+  /* line 394, _csswizardry-grids.scss */
+  .portable--one-fifth, .portable--two-tenths {
+    width: 20%;
+  }
+
+  /* line 395, _csswizardry-grids.scss */
+  .portable--two-fifths, .portable--four-tenths {
+    width: 40%;
+  }
+
+  /* line 396, _csswizardry-grids.scss */
+  .portable--three-fifths, .portable--six-tenths {
+    width: 60%;
+  }
+
+  /* line 397, _csswizardry-grids.scss */
+  .portable--four-fifths, .portable--eight-tenths {
+    width: 80%;
+  }
+
+  /**
+   * Sixths
+   */
+  /* line 403, _csswizardry-grids.scss */
+  .portable--one-sixth, .portable--two-twelfths {
+    width: 16.666%;
+  }
+
+  /* line 407, _csswizardry-grids.scss */
+  .portable--five-sixths, .portable--ten-twelfths {
+    width: 83.333%;
+  }
+
+  /**
+   * Eighths
+   */
+  /* line 413, _csswizardry-grids.scss */
+  .portable--one-eighth {
+    width: 12.5%;
+  }
+
+  /* line 415, _csswizardry-grids.scss */
+  .portable--three-eighths {
+    width: 37.5%;
+  }
+
+  /* line 417, _csswizardry-grids.scss */
+  .portable--five-eighths {
+    width: 62.5%;
+  }
+
+  /* line 419, _csswizardry-grids.scss */
+  .portable--seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+   * Tenths
+   */
+  /* line 425, _csswizardry-grids.scss */
+  .portable--one-tenth {
+    width: 10%;
+  }
+
+  /* line 427, _csswizardry-grids.scss */
+  .portable--three-tenths {
+    width: 30%;
+  }
+
+  /* line 431, _csswizardry-grids.scss */
+  .portable--seven-tenths {
+    width: 70%;
+  }
+
+  /* line 433, _csswizardry-grids.scss */
+  .portable--nine-tenths {
+    width: 90%;
+  }
+
+  /**
+   * Twelfths
+   */
+  /* line 439, _csswizardry-grids.scss */
+  .portable--one-twelfth {
+    width: 8.333%;
+  }
+
+  /* line 443, _csswizardry-grids.scss */
+  .portable--five-twelfths {
+    width: 41.666%;
+  }
+
+  /* line 445, _csswizardry-grids.scss */
+  .portable--seven-twelfths {
+    width: 58.333%;
+  }
+
+  /* line 449, _csswizardry-grids.scss */
+  .portable--eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /**
+   * Whole
+   */
+  /* line 367, _csswizardry-grids.scss */
+  .desk--one-whole {
+    width: 100%;
+  }
+
+  /**
+   * Halves
+   */
+  /* line 373, _csswizardry-grids.scss */
+  .desk--one-half, .desk--two-quarters, .desk--three-sixths, .desk--four-eighths, .desk--five-tenths, .desk--six-twelfths {
+    width: 50%;
+  }
+
+  /**
+   * Thirds
+   */
+  /* line 379, _csswizardry-grids.scss */
+  .desk--one-third, .desk--two-sixths, .desk--four-twelfths {
+    width: 33.333%;
+  }
+
+  /* line 380, _csswizardry-grids.scss */
+  .desk--two-thirds, .desk--four-sixths, .desk--eight-twelfths {
+    width: 66.666%;
+  }
+
+  /**
+   * Quarters
+   */
+  /* line 386, _csswizardry-grids.scss */
+  .desk--one-quarter, .desk--two-eighths, .desk--three-twelfths {
+    width: 25%;
+  }
+
+  /* line 388, _csswizardry-grids.scss */
+  .desk--three-quarters, .desk--six-eighths, .desk--nine-twelfths {
+    width: 75%;
+  }
+
+  /**
+   * Fifths
+   */
+  /* line 394, _csswizardry-grids.scss */
+  .desk--one-fifth, .desk--two-tenths {
+    width: 20%;
+  }
+
+  /* line 395, _csswizardry-grids.scss */
+  .desk--two-fifths, .desk--four-tenths {
+    width: 40%;
+  }
+
+  /* line 396, _csswizardry-grids.scss */
+  .desk--three-fifths, .desk--six-tenths {
+    width: 60%;
+  }
+
+  /* line 397, _csswizardry-grids.scss */
+  .desk--four-fifths, .desk--eight-tenths {
+    width: 80%;
+  }
+
+  /**
+   * Sixths
+   */
+  /* line 403, _csswizardry-grids.scss */
+  .desk--one-sixth, .desk--two-twelfths {
+    width: 16.666%;
+  }
+
+  /* line 407, _csswizardry-grids.scss */
+  .desk--five-sixths, .desk--ten-twelfths {
+    width: 83.333%;
+  }
+
+  /**
+   * Eighths
+   */
+  /* line 413, _csswizardry-grids.scss */
+  .desk--one-eighth {
+    width: 12.5%;
+  }
+
+  /* line 415, _csswizardry-grids.scss */
+  .desk--three-eighths {
+    width: 37.5%;
+  }
+
+  /* line 417, _csswizardry-grids.scss */
+  .desk--five-eighths {
+    width: 62.5%;
+  }
+
+  /* line 419, _csswizardry-grids.scss */
+  .desk--seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+   * Tenths
+   */
+  /* line 425, _csswizardry-grids.scss */
+  .desk--one-tenth {
+    width: 10%;
+  }
+
+  /* line 427, _csswizardry-grids.scss */
+  .desk--three-tenths {
+    width: 30%;
+  }
+
+  /* line 431, _csswizardry-grids.scss */
+  .desk--seven-tenths {
+    width: 70%;
+  }
+
+  /* line 433, _csswizardry-grids.scss */
+  .desk--nine-tenths {
+    width: 90%;
+  }
+
+  /**
+   * Twelfths
+   */
+  /* line 439, _csswizardry-grids.scss */
+  .desk--one-twelfth {
+    width: 8.333%;
+  }
+
+  /* line 443, _csswizardry-grids.scss */
+  .desk--five-twelfths {
+    width: 41.666%;
+  }
+
+  /* line 445, _csswizardry-grids.scss */
+  .desk--seven-twelfths {
+    width: 58.333%;
+  }
+
+  /* line 449, _csswizardry-grids.scss */
+  .desk--eleven-twelfths {
+    width: 91.666%;
+  }
+}
+/*------------------------------------*\
+    $PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $PULL
+\*------------------------------------*/
+/**
+ * Pull classes, to move grid items back to the left by certain amounts.
+ */
+/*---   Quarks   ---*/
+/*-------------------------------------*\
+    BREAKPOINTS
+\*-------------------------------------*/
+/**
+ * Breakpoints 
+ * 
+ * All the global breakpoints for the app
+ * 
+    
+ * 
+ * Global Breakpoints:
+ *  gbp-[name]
+ * 
+ * Local Breakpoints:
+ *  bp-[name]
+ * 
+ */
+/*-------------------------------------*\
+    COLORS
+\*-------------------------------------*/
+/**
+ * Colors 
+ * 
+ * All the global colors used throughout
+ * 
+ **
+ * Base
+ * 
+ * 
+ 
+    [lightest]  [brightest]
+    [lighter]   [brighter]
+    [light]     [bright]
+        --- base ---
+    [dark]      [dull]
+    [darker]    [duller]
+    [darkest]   [dullest]
+
+ * 
+ * Name Pattern:
+ *  c-[name]--[modifier]
+ * 
+ */
+/*-------------------------------------*\
+    Base Colors
+\*-------------------------------------*/
+/*-------------------------------------*\
+    Site Colors
+\*-------------------------------------*/
+/*-------------------------------------*\
+    FONTS
+\*-------------------------------------*/
+/**
+ * Fonts 
+ * 
+ **
+ * Imports
+ * Stacks
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    Imports
+\*-------------------------------------*/
+/*---   Icons   ---*/
+@font-face {
+  font-family: 'popoll';
+  src: url("/dist/fonts/popoll.eot?1wtw1w");
+  src: url("/dist/fonts/popoll.eot?#iefix1wtw1w") format("embedded-opentype"), url("/dist/fonts/popoll.woff?1wtw1w") format("woff"), url("/dist/fonts/popoll.ttf?1wtw1w") format("truetype"), url("/dist/fonts/popoll.svg?1wtw1w#popoll") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*-------------------------------------*\
+    Stacks
+\*-------------------------------------*/
+/*-------------------------------------*\
+    GRADIENTS
+\*-------------------------------------*/
+/**
+ * Gradients 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    BORDERS
+\*-------------------------------------*/
+/**
+ * Borders 
+ * 
+ * Classes for styled borders
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    ICONS
+\*-------------------------------------*/
+/**
+ * Icons 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/* line 15, quarks/_icons.scss */
+[class^="icon--"], [class*=" icon--"] {
+  font-family: 'popoll';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 29, quarks/_icons.scss */
+.icon--eye:before {
+  content: "\e600";
+}
+
+/* line 32, quarks/_icons.scss */
+.icon--eye-blocked:before {
+  content: "\e601";
+}
+
+/* line 35, quarks/_icons.scss */
+.icon--github:before {
+  content: "\e602";
+}
+
+/* line 38, quarks/_icons.scss */
+.icon--user:before {
+  content: "\e603";
+}
+
+/* line 41, quarks/_icons.scss */
+.icon--users:before {
+  content: "\e604";
+}
+
+/* line 44, quarks/_icons.scss */
+.icon--user-add:before {
+  content: "\e605";
+}
+
+/* line 47, quarks/_icons.scss */
+.icon--thumbsup:before {
+  content: "\e606";
+}
+
+/* line 50, quarks/_icons.scss */
+.icon--thumbsdown:before {
+  content: "\e607";
+}
+
+/* line 53, quarks/_icons.scss */
+.icon--bell:before {
+  content: "\e608";
+}
+
+/* line 56, quarks/_icons.scss */
+.icon--flag:before {
+  content: "\e609";
+}
+
+/* line 59, quarks/_icons.scss */
+.icon--tag:before {
+  content: "\e60a";
+}
+
+/* line 62, quarks/_icons.scss */
+.icon--music:before {
+  content: "\e60b";
+}
+
+/* line 65, quarks/_icons.scss */
+.icon--graduation:before {
+  content: "\e60c";
+}
+
+/* line 68, quarks/_icons.scss */
+.icon--airplane:before {
+  content: "\e60d";
+}
+
+/* line 71, quarks/_icons.scss */
+.icon--rocket:before {
+  content: "\e60e";
+}
+
+/* line 74, quarks/_icons.scss */
+.icon--brush:before {
+  content: "\e60f";
+}
+
+/* line 77, quarks/_icons.scss */
+.icon--earth:before {
+  content: "\e610";
+}
+
+/* line 80, quarks/_icons.scss */
+.icon--statistics:before {
+  content: "\e611";
+}
+
+/* line 83, quarks/_icons.scss */
+.icon--pie:before {
+  content: "\e612";
+}
+
+/* line 86, quarks/_icons.scss */
+.icon--bars:before {
+  content: "\e613";
+}
+
+/* line 89, quarks/_icons.scss */
+.icon--graph:before {
+  content: "\e614";
+}
+
+/* line 92, quarks/_icons.scss */
+.icon--checkmark:before {
+  content: "\e615";
+}
+
+/* line 95, quarks/_icons.scss */
+.icon--cross:before {
+  content: "\e616";
+}
+
+/* line 98, quarks/_icons.scss */
+.icon--minus:before {
+  content: "\e617";
+}
+
+/* line 101, quarks/_icons.scss */
+.icon--plus:before {
+  content: "\e618";
+}
+
+/* line 104, quarks/_icons.scss */
+.icon--cross2:before {
+  content: "\e619";
+}
+
+/* line 107, quarks/_icons.scss */
+.icon--minus2:before {
+  content: "\e61a";
+}
+
+/* line 110, quarks/_icons.scss */
+.icon--plus2:before {
+  content: "\e61b";
+}
+
+/* line 113, quarks/_icons.scss */
+.icon--cross3:before {
+  content: "\e61c";
+}
+
+/* line 116, quarks/_icons.scss */
+.icon--minus3:before {
+  content: "\e61d";
+}
+
+/* line 119, quarks/_icons.scss */
+.icon--plus3:before {
+  content: "\e61e";
+}
+
+/* line 122, quarks/_icons.scss */
+.icon--info:before {
+  content: "\e61f";
+}
+
+/* line 125, quarks/_icons.scss */
+.icon--question:before {
+  content: "\e620";
+}
+
+/* line 128, quarks/_icons.scss */
+.icon--add-to-list:before {
+  content: "\e621";
+}
+
+/* line 131, quarks/_icons.scss */
+.icon--bookmark:before {
+  content: "\e622";
+}
+
+/* line 134, quarks/_icons.scss */
+.icon--arrow-left:before {
+  content: "\e623";
+}
+
+/* line 137, quarks/_icons.scss */
+.icon--arrow-down:before {
+  content: "\e624";
+}
+
+/* line 140, quarks/_icons.scss */
+.icon--arrow-up-upload:before {
+  content: "\e625";
+}
+
+/* line 143, quarks/_icons.scss */
+.icon--arrow-right:before {
+  content: "\e626";
+}
+
+/* line 146, quarks/_icons.scss */
+.icon--twitter:before {
+  content: "\e627";
+}
+
+/* line 149, quarks/_icons.scss */
+.icon--facebook:before {
+  content: "\e628";
+}
+
+/* line 152, quarks/_icons.scss */
+.icon--googleplus:before {
+  content: "\e629";
+}
+
+/*-------------------------------------*\
+    ANIMATIONS
+\*-------------------------------------*/
+/**
+ * Animations 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+@-webkit-keyframes jiggle {
+  /* line 34, quarks/_animations.scss */
+  0% {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 38, quarks/_animations.scss */
+  25% {
+    -ms-transform: rotate(-6deg);
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  /* line 42, quarks/_animations.scss */
+  50% {
+    -ms-transform: rotate(6deg);
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  /* line 46, quarks/_animations.scss */
+  75% {
+    -ms-transform: rotate(-6deg);
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  /* line 50, quarks/_animations.scss */
+  100% {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@keyframes jiggle {
+  /* line 34, quarks/_animations.scss */
+  0% {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 38, quarks/_animations.scss */
+  25% {
+    -ms-transform: rotate(-6deg);
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  /* line 42, quarks/_animations.scss */
+  50% {
+    -ms-transform: rotate(6deg);
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  /* line 46, quarks/_animations.scss */
+  75% {
+    -ms-transform: rotate(-6deg);
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  /* line 50, quarks/_animations.scss */
+  100% {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+/*---   Utilities   ---*/
+/*-------------------------------------*\
+    GLOBAL
+\*-------------------------------------*/
+/**
+ * Global 
+ * 
+ * General site-wide things
+ * 
+ **
+ * 
+ * 
+ */
+/* line 26, utilities/_global.scss */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 29, utilities/_global.scss */
+body {
+  color: #424242;
+  font-family: verdana, arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.618;
+  text-align: center;
+  padding: 25.888px 103.552px;
+  background: #f7f7f7;
+  overflow-x: hidden;
+}
+
+/* line 40, utilities/_global.scss */
+.wrapper {
+  text-align: left;
+  max-width: 960px;
+}
+
+/* line 46, utilities/_global.scss */
+.scroll-fix {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 52, utilities/_global.scss */
+.one-line {
+  margin-bottom: 0;
+}
+
+/*-------------------------------------*\
+    ALIGNMENT
+\*-------------------------------------*/
+/**
+ * Alignment 
+ * 
+ * Change the alignment of elements, this
+ * includes text-alignment, floats, and
+ * clearing
+ *
+ **
+ * Base
+ *  - clears
+ *  - text-align
+ *  - floats
+ * 
+ * Implementation
+ *  - clears
+ *  - text-align
+ *  - floats
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/*---   Clears   ---*/
+/* line 43, utilities/_alignment.scss */
+.clear {
+  clear: both;
+}
+
+/* line 44, utilities/_alignment.scss */
+.clear-left {
+  clear: left;
+}
+
+/* line 45, utilities/_alignment.scss */
+.clear-right {
+  clear: left;
+}
+
+/* line 36, utilities/_alignment.scss */
+.clear-fix:after, .poll-list__item:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*---   Text Align   ---*/
+/* line 52, utilities/_alignment.scss */
+.align-left {
+  text-align: left;
+}
+
+/* line 53, utilities/_alignment.scss */
+.align-center {
+  text-align: center;
+}
+
+/* line 54, utilities/_alignment.scss */
+.align-right {
+  text-align: right;
+}
+
+/*---   Floats   ---*/
+/* line 60, utilities/_alignment.scss */
+.float-left {
+  float: left;
+}
+
+/* line 61, utilities/_alignment.scss */
+.float-right {
+  float: right;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*---   Clears   ---*/
+/*---   Text Align   ---*/
+/*---   Floats   ---*/
+/*-------------------------------------*\
+    NUDGE
+\*-------------------------------------*/
+/**
+ * Nudge
+ * 
+ * Styles for adding margins to elements
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 22, utilities/_nudge.scss */
+.nudge {
+  margin: 25.888px;
+}
+
+/* line 23, utilities/_nudge.scss */
+.nudge--top {
+  margin-top: 25.888px;
+}
+
+/* line 24, utilities/_nudge.scss */
+.nudge--right {
+  margin-right: 25.888px;
+}
+
+/* line 25, utilities/_nudge.scss */
+.nudge--bottom {
+  margin-bottom: 25.888px;
+}
+
+/* line 26, utilities/_nudge.scss */
+.nudge--left {
+  margin-left: 25.888px;
+}
+
+/* line 28, utilities/_nudge.scss */
+.nudge-half {
+  margin: 12.944px;
+}
+
+/* line 29, utilities/_nudge.scss */
+.nudge-half--top {
+  margin-top: 12.944px;
+}
+
+/* line 30, utilities/_nudge.scss */
+.nudge-half--right {
+  margin-right: 12.944px;
+}
+
+/* line 31, utilities/_nudge.scss */
+.nudge-half--bottom {
+  margin-bottom: 12.944px;
+}
+
+/* line 32, utilities/_nudge.scss */
+.nudge-half--left {
+  margin-left: 12.944px;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*-------------------------------------*\
+    PAD
+\*-------------------------------------*/
+/**
+ * Pad 
+ * 
+ * Styles for adding padding to elements
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 22, utilities/_pad.scss */
+.pad--top {
+  padding-top: 25.888px;
+}
+
+/* line 23, utilities/_pad.scss */
+.pad--right {
+  padding-right: 25.888px;
+}
+
+/* line 24, utilities/_pad.scss */
+.pad--bottom {
+  padding-bottom: 25.888px;
+}
+
+/* line 25, utilities/_pad.scss */
+.pad--left {
+  padding-left: 25.888px;
+}
+
+/* line 27, utilities/_pad.scss */
+.pad-half--top {
+  padding-top: 12.944px;
+}
+
+/* line 28, utilities/_pad.scss */
+.pad-half--right {
+  padding-right: 12.944px;
+}
+
+/* line 29, utilities/_pad.scss */
+.pad-half--bottom {
+  padding-bottom: 12.944px;
+}
+
+/* line 30, utilities/_pad.scss */
+.pad-half--left {
+  padding-left: 12.944px;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*---   Atoms   ---*/
+/*-------------------------------------*\
+    TYPE
+\*-------------------------------------*/
+/**
+ * Type 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    BUTTONS
+\*-------------------------------------*/
+/**
+ * Buttons 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    HEADINGS
+\*-------------------------------------*/
+/**
+ * Headings 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    IMAGES
+\*-------------------------------------*/
+/**
+ * Images 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    LINKS
+\*-------------------------------------*/
+/**
+ * Links 
+ * 
+ **
+ * Base
+ * Isotopes
+ * Implementation
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 23, atoms/_links.scss */
+a {
+  text-decoration: underline;
+}
+
+/*-------------------------------------*\
+    Isotopes
+\*-------------------------------------*/
+/* line 35, atoms/_links.scss */
+.plain--links a, .link--plain {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*---   Base   ---*/
+/*---   Isotopes   ---*/
+/*-------------------------------------*\
+    LISTS
+\*-------------------------------------*/
+/**
+ * Lists 
+ * 
+ * 
+ **
+ * Base
+ *  - Ordered Lists
+ *  - Unordered Lists
+ *  - Definition Lists
+ * Isotopes
+ *  - Flush
+ *  - Plain
+ *  - Single-line
+ *  - Image
+ * Implementation
+ *  - Base
+ *  - Isotopes
+ * 
+    
+    <div class="content-area">
+        <ul>
+            <li><!-- ... --></li>
+        </ul>
+    </div>
+
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/*---   Ordered List   ---*/
+/* line 48, atoms/_lists.scss */
+.list--ordered {
+  list-style-type: decimal;
+}
+
+/*---   Unordered List   ---*/
+/* line 62, atoms/_lists.scss */
+.list--unordered {
+  list-style-type: disc;
+}
+
+/*---   Definition List   ---*/
+/* line 79, atoms/_lists.scss */
+.list--definition > dt,
+.list__term {
+  font-weight: bold;
+}
+
+/*-------------------------------------*\
+    Isotopes
+\*-------------------------------------*/
+/*---   Flush List   ---
+
+ **
+ * A list with edges flush against the aligned side
+ */
+/* line 102, atoms/_lists.scss */
+.list--flush {
+  list-style-position: inside;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/*---   Plain List   ---
+
+ **
+ * A plain list with styling removed
+ */
+/* line 115, atoms/_lists.scss */
+.list--one-line, .list--image, .list--plain {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/*---   Single-line List   ---
+
+ **
+ * A list that exists as a single line
+ */
+/* line 131, atoms/_lists.scss */
+.list--ordered.list--one-line > li,
+.list--unordered.list--one-line > li,
+.list--definition.list--one-line > dt,
+.list--one-line > .list__term,
+.list--definition.list--one-line > dd,
+.list--one-line > .list__definition, .list--one-line > .list__item {
+  margin-bottom: 0;
+  display: inline;
+}
+
+/*---   Image List   ---
+
+ **
+ * A list that uses an image as the item marker
+ */
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*---   Base   ---*/
+/*---   Isotopes   ---*/
+/*-------------------------------------*\
+    SELECTIONS
+\*-------------------------------------*/
+/**
+ * Selections 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    SLABS
+\*-------------------------------------*/
+/**
+ * Slabs 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*---   Molecules   ---*/
+/*-------------------------------------*\
+    POLL LIST
+\*-------------------------------------*/
+/**
+ * Poll List 
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+    
+    <ul>
+        <li>
+            <section>
+            </section>
+        </li>
+    </ul>
+    
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 31, molecules/_poll-list.scss */
+.poll-list__item {
+  color: #fff;
+  padding: 6.472px;
+  margin-bottom: 12.944px;
+  background: #e95b40;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px #cacaca;
+  box-shadow: 0 1px #cacaca;
+}
+
+/* line 43, molecules/_poll-list.scss */
+.poll-list__question {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 48, molecules/_poll-list.scss */
+.poll-list__answer {
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 54, molecules/_poll-list.scss */
+.poll-list__actions {
+  color: #333;
+}
+
+/* line 58, molecules/_poll-list.scss */
+.poll-list__time {
+  color: #fff;
+  padding: 1.618px 3.8832px;
+  background: #ea934e;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px #ea930e;
+  box-shadow: 0 1px #ea930e;
+}
+
+/* line 67, molecules/_poll-list.scss */
+.poll-list__watch {
+  padding: 6.472px;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*-------------------------------------*\
+    POLL FORM
+\*-------------------------------------*/
+/**
+ * Poll Form 
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 22, molecules/_poll-form.scss */
+.poll-form__input {
+  padding: 6.472px 0;
+  border: 1px solid #e0e0e0;
+  background: #d8eff3;
+  outline: 0;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px #acacac inset;
+  box-shadow: 0 1px 2px #acacac inset;
+}
+
+/* line 35, molecules/_poll-form.scss */
+.poll-form__button {
+  color: #fff;
+  font-weight: bold;
+  padding: 6.472px 0;
+  border: 0;
+  background: #4eadec;
+  outline: 0;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 2px 2px #e0e0e0;
+  box-shadow: 0 2px 2px #e0e0e0;
+}
+/* line 48, molecules/_poll-form.scss */
+.poll-form__button:focus, .poll-form__button:hover {
+  background: #6cc1fa;
+  -webkit-animation: jiggle 0.25s;
+  animation: jiggle 0.25s;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+/*---   Organisms   ---*/
+/*---   Pages   ---*/
+/*---   Shame   ---*/
+/*-------------------------------------*\
+    SHAME
+\*-------------------------------------*/
+/**
+ * Shame
+ * 
+ * Where all the crappy styles go, the bad ones
+ * and the quick ones that you don't have time to
+ * bother with
+ * 
+    
+ * 
+ */
