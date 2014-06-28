@@ -53,3 +53,9 @@ body {
         margin-bottom: 0;
     }
         .one-line { @extend %one-line; }
+
+    %invisible {
+        opacity: 0;
+        pointer-events: none;
+    }
+        .invisible { @extend %invisible; }

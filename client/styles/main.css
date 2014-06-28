@@ -1948,6 +1948,12 @@ body {
   margin-bottom: 0;
 }
 
+/* line 57, utilities/_global.scss */
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /*-------------------------------------*\
     ALIGNMENT
 \*-------------------------------------*/
@@ -2473,10 +2479,12 @@ a {
   background: #4eadec;
   outline: 0;
   border-radius: 6px;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
   -webkit-box-shadow: 0 2px 2px #e0e0e0;
   box-shadow: 0 2px 2px #e0e0e0;
 }
-/* line 48, molecules/_poll-form.scss */
+/* line 49, molecules/_poll-form.scss */
 .poll-form__button:focus, .poll-form__button:hover {
   background: #6cc1fa;
   -webkit-animation: jiggle 0.25s;
