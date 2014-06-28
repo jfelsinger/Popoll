@@ -74,7 +74,7 @@ gulp.task('styles', function() {
 
 gulp.task('clientScripts', function() {
     return gulp.src([
-            dir.client + '/scripts/{,*/}*.js',
+            dir.client + '/scripts/*.js',
             '!' + dir.client + '/scripts/vendor/*',
         ])
         .pipe(jshint('.jshintrc'))

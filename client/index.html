@@ -17,10 +17,10 @@
 
         <h4>Make polls quickly and share them with others just as fast!</h4>
 
-        <form class="poll-form  align-center">
-            <input placeholder="Start typing to start a new poll!" class="align-center  one-whole  poll-form__input  nudge-half--bottom">
+        <form v-on="submit: submit" class="js-poll-form  poll-form  align-center">
+            <input v-model="question" placeholder="Start typing to start a new poll!" class="align-center  one-whole  poll-form__input  nudge-half--bottom">
 
-            <button class="poll-form__button  invisible  one-half">Start That Poll Son!</button>
+            <button v-class="invisible: !isValid" class="poll-form__button  invisible  one-half">Start That Poll Son!</button>
         </form>
 
 
