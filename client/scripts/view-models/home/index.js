@@ -3,7 +3,7 @@ var Vue = require('vue');
 module.exports = function() {
     'use strict';
 
-    var url = 'http://localhost:3000';
+    var url = 'http://localhost:3000/api/';
 
     // Create simple view model
     window.vue = new Vue({
@@ -23,9 +23,28 @@ module.exports = function() {
         },
 
         methods: {
-            submit: function() {
+            submit: function(e) {
                 console.log('Submit!');
-                console.log(this);
+                e.preventDefault();
+
+                if (this.isValid) {
+                    var request = new XMLHttpRequest(),
+                        self = this;
+
+                    $.ajax({
+                        type: 'post',
+                        url: url + 'polls',
+                        data: {
+                            question: this.question
+                        }
+                    })
+                    .done(function(data) {
+                        console.log(data);
+                    })
+                    .error(function(data) {
+                        console.log(data);
+                    });
+                }
 
                 return false;
             },

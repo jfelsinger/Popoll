@@ -74,8 +74,8 @@ gulp.task('styles', function() {
 
 gulp.task('clientScripts', function() {
     return gulp.src([
-            dir.client + '/scripts/*.js',
-            '!' + dir.client + '/scripts/vendor/*',
+            dir.client + '/scripts/**/*.js',
+            '!' + dir.client + '/scripts/vendor/**',
         ])
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
@@ -144,7 +144,7 @@ gulp.task('watch', ['app', 'client'], function() {
     gulp.watch(dir.client + '/styles/{,*/}*.{sass,scss}', ['styles']);
 
     // Watch client scripts
-    gulp.watch(dir.client + '/scripts/{,*/}*.js', ['clientScripts']);
+    gulp.watch(dir.client + '/scripts/**/*.js', ['clientScripts']);
 
     // Watch server scripts
     gulp.watch(dir.app + '/{,*/}*.js', ['app-restart']);

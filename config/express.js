@@ -1,4 +1,5 @@
 var express = require('express'),
+    bodyParser = require('body-parser'),
     morgan = require('morgan'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
@@ -29,6 +30,10 @@ module.exports = function(app) {
             collection: 'sessions'
         })
     }));
+
+    // parse application/json
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     // Continue to routing, 
     require('./routes')(app);

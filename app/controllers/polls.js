@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 // Polls
 // ------------------------------------------------
 exports.getPublic = function(req, res) {
-    Poll.find({ 'public': true })
+    Poll.find()
         .populate('user', 'name email username')
         .populate('comments.user', 'name email username')
         .populate('choices.votes.user', 'name email username')
