@@ -1949,6 +1949,11 @@ body {
 }
 
 /* line 57, utilities/_global.scss */
+.light {
+  opacity: .75;
+}
+
+/* line 62, utilities/_global.scss */
 .invisible {
   opacity: 0;
   pointer-events: none;
@@ -2177,6 +2182,11 @@ body {
     
  * 
  */
+/* line 14, atoms/_type.scss */
+p {
+  margin-top: 0;
+}
+
 /*-------------------------------------*\
     BUTTONS
 \*-------------------------------------*/
@@ -2364,6 +2374,40 @@ a {
  * 
  */
 /*-------------------------------------*\
+    FORMS
+\*-------------------------------------*/
+/**
+ * Forms 
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+ */
+/*-------------------------------------*\
+     Base
+\*-------------------------------------*/
+/* line 19, atoms/_forms.scss */
+.textarea, .input {
+  padding: 6.472px;
+  border: 1px solid #e0e0e0;
+  background: #d8eff3;
+  outline: 0;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px #acacac inset;
+  box-shadow: 0 1px 2px #acacac inset;
+}
+
+/* line 32, atoms/_forms.scss */
+.textarea {
+  font-size: .75em;
+  min-height: 90.608px;
+}
+
+/*-------------------------------------*\
+     Implementation
+\*-------------------------------------*/
+/*-------------------------------------*\
     SLABS
 \*-------------------------------------*/
 /**
@@ -2495,6 +2539,38 @@ a {
     Implementation
 \*-------------------------------------*/
 /*---   Organisms   ---*/
+/*-------------------------------------*\
+    COMMENTS
+\*-------------------------------------*/
+/**
+ * Comments 
+ * 
+ **
+ * Base 
+ * Implementation
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 26, organisms/_comments.scss */
+.comment {
+  border-left: 1px solid #e0e0e0;
+  padding-left: 6.472px;
+}
+
+/* line 31, organisms/_comments.scss */
+.comment__footer {
+  font-size: 13px;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
 /*---   Pages   ---*/
 /*---   Shame   ---*/
 /*-------------------------------------*\

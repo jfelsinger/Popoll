@@ -1,0 +1,62 @@
+/*-------------------------------------*\
+    COMMENTS
+\*-------------------------------------*/
+
+/**
+ * Comments 
+ * 
+ **
+ * Base 
+ * Implementation
+ * 
+ * 
+ * 
+    
+ * 
+ */ 
+ 
+
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+
+%comments {
+}
+
+    %comment {
+        border-left: 1px solid #e0e0e0;
+        padding-left: unit(.25);
+    }
+
+        %comment__footer {
+            font-size: 13px;
+        }
+
+            %comment__author {
+            }
+
+            %comment__time {
+            }
+
+        %comment__body {
+        }
+
+
+
+
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+
+.comments { @extend %comments !optional; }
+    .comment { @extend %comment !optional; }
+        .comment__footer { @extend %comment__footer !optional; }
+            .comment__author { @extend %comment__author !optional; }
+            .comment__time { @extend %comment__time !optional; }
+        .comment__body { @extend %comment__body !optional; }
+
+
+
+
+

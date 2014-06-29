@@ -17,6 +17,8 @@ exports.getPublic = function(req, res) {
 };
 
 exports.get = function(req, res) {
+    console.log(req.params.poll_id);
+
     Poll.findById(req.params.poll_id)
         .populate('user', 'name email username')
         .populate('comments.user', 'name email username')
@@ -30,12 +32,18 @@ exports.get = function(req, res) {
 exports.post = function(req, res) {
     var poll = new Poll();
 
-    poll.question = req.body.question;
-    poll.desc = req.body.desc;
 
-    poll.save(function(err) {
+    Poll.create({
+        question: req.body.question,
+        desc: req.body.desc
+    }, function(err, poll) {
         if (err) res.send(500, err);
-        res.json(201, { message: 'Poll created!' });
+
+        res.json(201, { 
+            message: 'Poll created!',
+            poll: poll
+        });
+
     });
 };
 

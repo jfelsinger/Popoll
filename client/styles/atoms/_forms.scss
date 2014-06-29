@@ -16,6 +16,26 @@
      Base
 \*-------------------------------------*/
 
+%input {
+    padding: unit(.25);
+    border: 1px solid #e0e0e0;
+    background: #d8eff3;
+
+    outline: 0;
+
+    @include border-radius(4px);
+    @include box-shadow((
+        0 1px 2px #acacac inset
+    ));
+}
+
+%textarea {
+    @extend %input !optional;
+
+    font-size: .75em;
+    min-height: unit(3.5);
+}
+
  
  
  
@@ -23,6 +43,10 @@
 /*-------------------------------------*\
      Implementation
 \*-------------------------------------*/
+
+.input { @extend %input !optional; }
+
+.textarea { @extend %textarea !optional; }
  
  
  

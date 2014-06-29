@@ -54,6 +54,11 @@ body {
     }
         .one-line { @extend %one-line; }
 
+    %light {
+        opacity: .75;
+    }
+        .light { @extend %light; }
+
     %invisible {
         opacity: 0;
         pointer-events: none;
