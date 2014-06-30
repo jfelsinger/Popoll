@@ -2538,6 +2538,49 @@ a {
 /*-------------------------------------*\
     Implementation
 \*-------------------------------------*/
+/*-------------------------------------*\
+    POLL CHOICES
+\*-------------------------------------*/
+/**
+ * Poll Choices
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+ */
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+/* line 23, molecules/_poll-choices.scss */
+.poll__choice {
+  overflow: hidden;
+  padding: 12.944px 25.888px;
+  border: 1px dashed #cdcdcd;
+  margin-bottom: 1em;
+  position: relative;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 2px rgba(0, 0, 0, 0.18) inset, 0 0 1px 1px rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 2px rgba(0, 0, 0, 0.18) inset, 0 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+/* line 45, molecules/_poll-choices.scss */
+.choice__meter {
+  display: block;
+  background: #aeaeae;
+  height: 51.776px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) inset;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) inset;
+}
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
 /*---   Organisms   ---*/
 /*-------------------------------------*\
     COMMENTS

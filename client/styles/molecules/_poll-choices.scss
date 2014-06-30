@@ -1,0 +1,81 @@
+/*-------------------------------------*\
+    POLL CHOICES
+\*-------------------------------------*/
+
+/**
+ * Poll Choices
+ * 
+ **
+ * Base
+ * Implementation
+ * 
+ */ 
+ 
+
+
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+
+%poll__choices {
+}
+
+    %poll__choice {
+        overflow: hidden;
+        padding: unit(.5) unit(1);
+        border: 1px dashed #cdcdcd;
+        margin-bottom: 1em;
+        position: relative;
+
+        @include border-radius(6px);
+
+        @include box-shadow((
+            0 0 0 1px rgba(0,0,0,.1) inset,
+            0 0 2px rgba(0,0,0,.18) inset,
+            0 0 1px 1px rgba(255,255,255,.45)
+        ));
+    }
+        
+        %choice__name {
+        }
+
+        %choice__votes {
+        }
+
+        %choice__meter {
+            display: block;
+            background: #aeaeae;
+            height: unit(2);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+
+            @include border-radius(1px);
+
+            @include box-shadow((
+                0 1px 6px rgba(0,0,0,.35) inset
+            ));
+        }
+
+
+
+
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+
+.poll__choices { @extend %poll__choices !optional; }
+
+    .poll__choice { @extend %poll__choice !optional; }
+
+        .choice__name { @extend %choice__name !optional; }
+        .choice__votes { @extend %choice__votes !optional; }
+        .choice__meter { @extend %choice__meter !optional; }
+
+
+
+
+

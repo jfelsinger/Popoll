@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/styles/main.css">
 
 </head>
-<body class="js-poll">
+<body class="js-poll  clear-fix">
     <div class="wrapper">
 
         <h1>Popoll!</h1>
@@ -28,8 +28,10 @@
         <section data-ui-component="poll__choices">
             <h5 v-show="!choices.length">There are no choices for this poll yet. Add one?</h5>
 
-            <section v-repeat="choices" class="poll__choice">
-                <p>{{ name }}</p>
+            <section v-repeat="choices" class="poll__choice  clear-fix">
+                <div class="choice__name  float-left">{{ name }}</div>
+                <div v-class="light: votes.length == 0" class="choice__votes  float-right">{{ votes.length ? votes.length : 'no' }} votes</div>
+                <div v-style="width: voteCount + '%'" class="choice__meter  one-whole"></div>
             </section>
 
             <form v-on="submit: choiceSubmit">
@@ -42,15 +44,15 @@
             <h3>Comments</h3>
 
             <article v-repeat="comments" class="comment">
-                <footer class="comment__footer">
+                <footer class="comment__footer  clear-fix">
+                    <a v-on="click: commentDelete(this, $event)" href="#" class="float-right  icon--cross  link--plain"></a>
                     <span v-text="user.username" class="comment__author"></span>
                     <small class="comment__time  light">
-                        on <time v-text="createdat | dateformat fullDate" datetime="" pubdate>08 Aug 2014</time>
+                        on <time v-text="createdat | dateformat fullDate" datetime="" pubdate></time>
                     </small>
                 </footer>
 
                 <div v-html="body | marked" class="comment__body">
-                    This is the **comment** body
                 </div>
             </article>
 

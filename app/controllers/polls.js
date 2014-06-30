@@ -210,7 +210,7 @@ comments.del = function(req, res) {
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            poll.comment.id(req.params.comment_id).remove();
+            poll.comments.id(req.params.comment_id).remove();
 
             poll.save(function(err) {
                 if (err) res.send(500, err);
