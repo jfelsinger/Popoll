@@ -2198,6 +2198,34 @@ p {
     
  * 
  */
+/* line 15, atoms/_buttons.scss */
+.button,
+button {
+  color: #fff;
+  font-weight: bold;
+  padding: 6.472px 0;
+  border: 0;
+  background: #4eadec;
+  outline: 0;
+  border-radius: 6px;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-box-shadow: 0 2px 2px #e0e0e0;
+  box-shadow: 0 2px 2px #e0e0e0;
+}
+/* line 30, atoms/_buttons.scss */
+.button:focus, .button:hover,
+button:focus,
+button:hover {
+  background: #6cc1fa;
+}
+
+/* line 37, atoms/_buttons.scss */
+.button--jiggly:focus, .button--jiggly:hover {
+  -webkit-animation: jiggle 0.25s;
+  animation: jiggle 0.25s;
+}
+
 /*-------------------------------------*\
     HEADINGS
 \*-------------------------------------*/
@@ -2552,7 +2580,17 @@ a {
 /*-------------------------------------*\
     Base
 \*-------------------------------------*/
-/* line 23, molecules/_poll-choices.scss */
+/* line 20, molecules/_poll-choices.scss */
+.poll__choices {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 31, molecules/_poll-choices.scss */
 .poll__choice {
   overflow: hidden;
   padding: 12.944px 25.888px;
@@ -2563,17 +2601,24 @@ a {
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 2px rgba(0, 0, 0, 0.18) inset, 0 0 1px 1px rgba(255, 255, 255, 0.45);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 2px rgba(0, 0, 0, 0.18) inset, 0 0 1px 1px rgba(255, 255, 255, 0.45);
 }
+/* line 38, molecules/_poll-choices.scss */
+.poll__choice:hover {
+  cursor: pointer;
+  border: 1px solid #cdcdcd;
+}
 
-/* line 45, molecules/_poll-choices.scss */
+/* line 58, molecules/_poll-choices.scss */
 .choice__meter {
   display: block;
-  background: #aeaeae;
+  background: #e99566;
   height: 51.776px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
   border-radius: 1px;
+  -webkit-transition: width 0.75s ease;
+  transition: width 0.75s ease;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) inset;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) inset;
 }

@@ -18,6 +18,14 @@
 \*-------------------------------------*/
 
 %poll__choices {
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 }
 
     %poll__choice {
@@ -26,6 +34,11 @@
         border: 1px dashed #cdcdcd;
         margin-bottom: 1em;
         position: relative;
+
+        &:hover {
+            cursor: pointer;
+            border: 1px solid #cdcdcd;
+        }
 
         @include border-radius(6px);
 
@@ -44,7 +57,7 @@
 
         %choice__meter {
             display: block;
-            background: #aeaeae;
+            background: #e99566;
             height: unit(2);
 
             position: absolute;
@@ -53,6 +66,9 @@
             z-index: -1;
 
             @include border-radius(1px);
+
+            @include transition(width .75s ease);
+
 
             @include box-shadow((
                 0 1px 6px rgba(0,0,0,.35) inset

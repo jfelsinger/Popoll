@@ -31,7 +31,32 @@ window.vue = new Vue({
             }, 0);
 
             return total;
-        }
+        },
+
+        tinyUrl: function() {
+            var url = config.url + 'poll/' + this._id;
+            console.log(url);
+            console.log(encodeURIComponent(url));
+            request
+                .get('http://tiny.cc/')
+                .query({
+                    c: 'rest_api',
+                    m: 'shorten',
+                    login: 'jfelsinger',
+                    apiKey: 'a7073d35-92cf-4416-ade4-ab78d4647598',
+                    version: '2.0.3',
+                    longUrl: encodeURIComponent(url)
+                })
+                .end(function(err, res) {
+                    if (err) return console.log(err);
+                    
+                    if (res.ok) {
+                        console.log(res);
+                    }
+                });
+
+            return url;
+        },
     },
 
     methods: {
@@ -51,6 +76,8 @@ window.vue = new Vue({
                 });
             }
         },
+
+
 
         choiceSubmit: function(e) {
             e.preventDefault();
@@ -72,6 +99,45 @@ window.vue = new Vue({
 
             return false;
         },
+
+        choiceDelete: function(choice, e) {
+            var self = this;
+
+            e.preventDefault();
+
+            request
+                .del(config.url + '/poll/' + this.$data._id + '/choice/' + choice._id)
+                .end(function(err, res) {
+                    if (err) return console.log(err);
+
+                    if (res.ok) {
+                        console.log(res);
+                        self.choices.$remove(choice.$data);
+                    }
+                });
+
+            return false;
+        },
+
+        vote: function(choice, e) {
+            var self = this;
+
+            e.preventDefault();
+
+            request
+                .get(config.url + '/poll/' + this.$data._id + '/choice/' + choice._id + '/vote')
+                .end(function(err, res) {
+                    if (err) return console.log(err);
+
+                    if (res.ok) {
+                        console.log(res);
+                        choice.votes.push({
+                            priority: 1
+                        });
+                    }
+                });
+        },
+
 
         commentSubmit: function(e) {
             var self = this;

@@ -89,9 +89,11 @@ choices.get = function(req, res) {
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            var option = poll.choices.id(req.params.object_id);
+            var option = poll.choices.id(req.params.option_id);
 
-            if (!option) res.send(404, 'Option not found with id ' + req.params.object_id);
+            if (option == null)
+                res.send(404, 'Option not found with id ' + req.params.option_id);
+    
             res.json(option);
         });
 };
@@ -125,6 +127,23 @@ choices.put = function(req, res) {
                 res.json(201, { message: 'Option created!' });
             });
         });
+};
+
+choices.vote = function(req, res) {
+    Poll.findById(req.params.poll_id, 'choices')
+        .populate('choices.votes.user', 'name email username')
+        .exec(function(err, poll) {
+            if (err) res.send(500, err);
+
+
+            poll.vote(
+                req.params.option_id, {}, 1,
+                function(err) {
+                    if (err) res.send(500, err);
+                    res.json(201, { message: 'Vote added!' });
+                });
+        });
+
 };
 
 choices.del = function(req, res) {

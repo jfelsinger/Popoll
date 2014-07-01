@@ -36,6 +36,9 @@ module.exports = function(app) {
         .put(polls.choices.put)
         .delete(polls.choices.del);
 
+    router.route('/poll/:poll_id/choice/:option_id/vote')
+        .get(polls.choices.vote);
+
     // Poll->Comments routes
     // ------------------------------------------------
     router.route('/poll/:poll_id/comments')

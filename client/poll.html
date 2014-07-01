@@ -21,17 +21,18 @@
         <form v-on="submit: submit" class="js-poll-form  poll-form  align-center">
             <input v-model="question" placeholder="Start typing to start a new poll!" class="align-center  one-whole  poll-form__input  nudge-half--bottom">
 
-            <button v-class="invisible: !isValid" class="poll-form__button  invisible  one-half">Start That Poll Son!</button>
+            <button v-class="invisible: !isValid" class="invisible  one-half">Start That Poll Son!</button>
         </form>
         -->
 
-        <section data-ui-component="poll__choices">
+        <section class="poll__choices" data-ui-component="poll__choices">
             <h5 v-show="!choices.length">There are no choices for this poll yet. Add one?</h5>
 
-            <section v-repeat="choices" class="poll__choice  clear-fix">
+            <section v-on="click: vote(this, $event)" v-repeat="choices" class="poll__choice  clear-fix">
+                <a v-on="click: choiceDelete(this, $event)" href="#" class="float-right  icon--cross  link--plain"></a>
                 <div class="choice__name  float-left">{{ name }}</div>
                 <div v-class="light: votes.length == 0" class="choice__votes  float-right">{{ votes.length ? votes.length : 'no' }} votes</div>
-                <div v-style="width: voteCount + '%'" class="choice__meter  one-whole"></div>
+                <div v-style="width: (votes.length/voteCount) * 100 + '%'" class="choice__meter  one-whole"></div>
             </section>
 
             <form v-on="submit: choiceSubmit">
@@ -46,7 +47,7 @@
             <article v-repeat="comments" class="comment">
                 <footer class="comment__footer  clear-fix">
                     <a v-on="click: commentDelete(this, $event)" href="#" class="float-right  icon--cross  link--plain"></a>
-                    <span v-text="user.username" class="comment__author"></span>
+                    <span v-text="user.username ? user.username : 'anonymous'" class="comment__author"></span>
                     <small class="comment__time  light">
                         on <time v-text="createdat | dateformat fullDate" datetime="" pubdate></time>
                     </small>
@@ -59,7 +60,7 @@
             <form v-on="submit: commentSubmit">
                 <textarea v-model="newCommentBody" class="one-whole  textarea"></textarea>
 
-                <button class="poll-form__button  one-third  float-right">New Comment</button>
+                <button class="one-third  float-right">New Comment</button>
             </form>
         </section>
 
