@@ -1,10 +1,10 @@
 'use strict';
 /* jslint browser: true */
 
-var config = require('./main');
+require('./main');
 
 var Vue = require('vue'),
-    request = require('superagent');
+    pollApi = require('./models/poll');
 
 // Create simple view model
 window.vue = new Vue({
@@ -25,19 +25,13 @@ window.vue = new Vue({
 
     methods: {
         submit: function(e) {
-            console.log('Submit!');
             e.preventDefault();
 
             if (this.isValid) {
-                request.post(config.url + 'polls', this.$data, function(err, res) {
-                    if (err) return console.log(err);
-
-                    if (res.ok)
-                        window.location = '/poll.html?id=' + res.body.poll._id;
+                pollApi.post(this.$data), function(err, res) {
+                    window.location = '/poll.html?id=' + res.body.poll._id;
                 });
             }
-
-            return false;
         },
     }
 });

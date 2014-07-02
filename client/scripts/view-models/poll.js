@@ -1,18 +1,23 @@
 'use strict';
 /* jslint browser: true */
 
-var config = require('./main');
+require('./main');
 
 var Vue = require('vue'),
+    config = require('./config'),
+    lib = require('./config'),
+    pollApi = require('./models/poll'),
     marked = require('marked'),
-    dateformat = require('dateformat'),
-    request = require('superagent');
+    dateformat = require('dateformat');
 
 // Create a view-model for handling the poil
 window.vue = new Vue({
     el: '.js-poll',
 
     data: {
+        poll: {},
+        newCommentBody: '',
+        newChoice: ''
     },
 
     created: function() {
@@ -23,61 +28,31 @@ window.vue = new Vue({
         voteCount: function() {
             if (!(this.choices && this.choices.reduce)) return 0;
 
-            var total = this.choices.reduce(function(prev, current) {
+            // Add up all the votes for each choice
+            return this.choices.reduce(function(prev, current) {
                 if (!(current && current.votes)) 
                     return prev;
 
                 return prev + current.votes.length;
             }, 0);
-
-            return total;
         },
 
-        tinyUrl: function() {
-            var url = config.url + 'poll/' + this._id;
-            console.log(url);
-            console.log(encodeURIComponent(url));
-            request
-                .get('http://tiny.cc/')
-                .query({
-                    c: 'rest_api',
-                    m: 'shorten',
-                    login: 'jfelsinger',
-                    apiKey: 'a7073d35-92cf-4416-ade4-ab78d4647598',
-                    version: '2.0.3',
-                    longUrl: encodeURIComponent(url)
-                })
-                .end(function(err, res) {
-                    if (err) return console.log(err);
-                    
-                    if (res.ok) {
-                        console.log(res);
-                    }
-                });
-
-            return url;
+        tinyUrl: function tinyUrl() {
+            return lib.minifyUrl(config.apiUrl + 'poll/' + this._id);
         },
     },
 
     methods: {
-        fetchData: function() {
-            var pollId = config.helpers.getQueryVariable('id');
+        fetchData: function fetchData() {
+            var poll_id = lib.getQueryValue('id');
             var self = this;
 
-            if (pollId) {
-                request.get(config.url + 'poll/' + pollId, function(err, res) {
-                    if (err) return console.log(err);
-                    
-                    if (res.ok) {
-                        self.$data = res.body;
-                        self.$data.newCommentBody = '';
-                        self.$data.newChoice = '';
-                    }
-                });
-            }
+            pollApi.get(poll_id, function(err, res) {
+                self.poll = res.body;
+            });
         },
 
-
+        // Choice methods
 
         choiceSubmit: function(e) {
             e.preventDefault();
@@ -87,36 +62,23 @@ window.vue = new Vue({
             if (this.newChoice) {
                 var choice = { name: this.newChoice }
 
-                request.post(config.url + 'poll/' + this.$data._id + '/choices', choice, function(err, res) {
-                    if (err) return console.log(err);
-
-                    if (res.ok) {
-                        self.choices.push(choice);
-                        self.newChoice = '';
-                    }
+                pollApi.choices.post(this.poll._id, choice, function(err, res) {
+                    self.choices.push(choice);
+                    self.newChoice = '';
                 });
             }
-
-            return false;
         },
 
         choiceDelete: function(choice, e) {
             var self = this;
+            var poll_id = this.poll._id;
 
             e.preventDefault();
 
-            request
-                .del(config.url + '/poll/' + this.$data._id + '/choice/' + choice._id)
-                .end(function(err, res) {
-                    if (err) return console.log(err);
-
-                    if (res.ok) {
-                        console.log(res);
-                        self.choices.$remove(choice.$data);
-                    }
-                });
-
-            return false;
+            pollApi.choices.del(poll_id, choice._id, function(err,res) {
+                console.log(res);
+                self.choices.$remove(choice.$data);
+            });
         },
 
         vote: function(choice, e) {
@@ -124,20 +86,15 @@ window.vue = new Vue({
 
             e.preventDefault();
 
-            request
-                .get(config.url + '/poll/' + this.$data._id + '/choice/' + choice._id + '/vote')
-                .end(function(err, res) {
-                    if (err) return console.log(err);
-
-                    if (res.ok) {
-                        console.log(res);
-                        choice.votes.push({
-                            priority: 1
-                        });
-                    }
+            pollApi.choices.vote(this.poll._id, choice._id, function(err, res) {
+                console.log(res);
+                choice.votes.push({
+                    priority: 1
                 });
+            });
         },
 
+        // Comment Methods
 
         commentSubmit: function(e) {
             var self = this;
@@ -145,7 +102,6 @@ window.vue = new Vue({
             e.preventDefault();
 
             if (this.newCommentBody) {
-
                 var comment = {
                     body: this.newCommentBody,
                     createdAt: Date.now,
@@ -155,20 +111,12 @@ window.vue = new Vue({
                     }
                 };
                 
-                this.comments.push(comment);
-
-                request.post(config.url + 'poll/' + this.$data._id + '/comments', comment, function(err, res) {
-                    if (err) return console.log(err);
-
-                    if (res.ok) {
-                        console.log(res);
-                        self.newCommentBody = '';
-                    }
+                pollApi.comments.post(this.poll._id, comment, function(err, res) {
+                    console.log(res);
+                    self.newCommentBody = '';
+                    self.comments.push(comment);
                 });
-
             }
-
-            return false;
         },
 
         commentDelete: function(comment, e) {
@@ -176,18 +124,10 @@ window.vue = new Vue({
 
             e.preventDefault();
 
-            request
-                .del(config.url + '/poll/' + this.$data._id + '/comment/' + comment._id)
-                .end(function(err, res) {
-                    if (err) return console.log(err);
-
-                    if (res.ok) {
-                        console.log(res);
-                        self.comments.$remove(comment.$data);
-                    }
-                });
-
-            return false;
+            pollApi.comments.del(this.poll._id, comment._id, function(err, res) {
+                console.log(res);
+                self.comments.$remove(comment.$data);
+            });
         },
     },
 
