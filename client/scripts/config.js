@@ -8,9 +8,9 @@
 'use strict';
 /* jslint browser: true */
 
-exports = {
+module.exports = {
     // Popollo REST-api location
-    apiUrl: 'http://localhost:3000/api/';
+    apiUrl: 'http://localhost:3000/api/',
 
     // Tiny.cc api settings
     tinycc: {

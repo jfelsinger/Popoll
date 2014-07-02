@@ -58,6 +58,15 @@ function respond(cb) {
 function minifyUrl(url) {
     var tinyUrl = '';
 
+    console.log({
+        c: 'rest_api',
+        m: 'shorten',
+        login: config.tinycc.login,
+        apiKey: config.tinycc.apiKey,
+        version: config.tinycc.version,
+        longUrl: encodeURIComponent(url)
+    });
+
     request
         .get('http://tiny.cc/')
         .query({
@@ -66,7 +75,7 @@ function minifyUrl(url) {
             login: config.tinycc.login,
             apiKey: config.tinycc.apiKey,
             version: config.tinycc.version,
-            longUrl: encodeURIComponent(url);
+            longUrl: encodeURIComponent(url)
         })
         .end(respond(function(err, res) {
             console.log(res);
@@ -75,7 +84,7 @@ function minifyUrl(url) {
     return tinyUrl;
 }
 
-exports.parameters = parameters;
-exports.getQueryValue = getQueryValue;
-exports.respond = respond;
-exports.minifyUrl = minifyUrl;
+module.exports.parameters = parameters;
+module.exports.getQueryValue = getQueryValue;
+module.exports.respond = respond;
+module.exports.minifyUrl = minifyUrl;

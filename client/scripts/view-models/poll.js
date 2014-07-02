@@ -5,7 +5,7 @@ require('./main');
 
 var Vue = require('vue'),
     config = require('./config'),
-    lib = require('./config'),
+    lib = require('./lib'),
     pollApi = require('./models/poll'),
     marked = require('marked'),
     dateformat = require('dateformat');
@@ -15,7 +15,11 @@ window.vue = new Vue({
     el: '.js-poll',
 
     data: {
-        poll: {},
+        poll: {
+            _id: lib.getQueryValue('id'),
+            choices: [],
+            comments: []
+        },
         newCommentBody: '',
         newChoice: ''
     },
@@ -26,10 +30,8 @@ window.vue = new Vue({
 
     computed: {
         voteCount: function() {
-            if (!(this.choices && this.choices.reduce)) return 0;
-
             // Add up all the votes for each choice
-            return this.choices.reduce(function(prev, current) {
+            return this.poll.choices.reduce(function(prev, current) {
                 if (!(current && current.votes)) 
                     return prev;
 
@@ -38,16 +40,17 @@ window.vue = new Vue({
         },
 
         tinyUrl: function tinyUrl() {
-            return lib.minifyUrl(config.apiUrl + 'poll/' + this._id);
+            var pollId = this.poll._id || lib.getQueryValue('id');
+            return lib.minifyUrl(config.apiUrl + 'poll/' + pollId);
         },
     },
 
     methods: {
         fetchData: function fetchData() {
-            var poll_id = lib.getQueryValue('id');
+            var pollId = lib.getQueryValue('id');
             var self = this;
 
-            pollApi.get(poll_id, function(err, res) {
+            pollApi.get(pollId, function(err, res) {
                 self.poll = res.body;
             });
         },
@@ -60,9 +63,9 @@ window.vue = new Vue({
             var self = this;
 
             if (this.newChoice) {
-                var choice = { name: this.newChoice }
+                var choice = { name: this.newChoice };
 
-                pollApi.choices.post(this.poll._id, choice, function(err, res) {
+                pollApi.choices.post(this.poll._id, choice, function() {
                     self.choices.push(choice);
                     self.newChoice = '';
                 });
@@ -71,19 +74,17 @@ window.vue = new Vue({
 
         choiceDelete: function(choice, e) {
             var self = this;
-            var poll_id = this.poll._id;
+            var pollId = this.poll._id;
 
             e.preventDefault();
 
-            pollApi.choices.del(poll_id, choice._id, function(err,res) {
+            pollApi.choices.del(pollId, choice._id, function(err,res) {
                 console.log(res);
                 self.choices.$remove(choice.$data);
             });
         },
 
         vote: function(choice, e) {
-            var self = this;
-
             e.preventDefault();
 
             pollApi.choices.vote(this.poll._id, choice._id, function(err, res) {

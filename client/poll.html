@@ -15,7 +15,7 @@
 
         <h1>Popoll!</h1>
 
-        <h2 v-text="question"></h2>
+        <h2 v-text="poll.question"></h2>
 
         <!--
         <form v-on="submit: submit" class="js-poll-form  poll-form  align-center">
@@ -26,9 +26,9 @@
         -->
 
         <section class="poll__choices" data-ui-component="poll__choices">
-            <h5 v-show="!choices.length">There are no choices for this poll yet. Add one?</h5>
+            <h5 v-show="!poll.choices.length">There are no choices for this poll yet. Add one?</h5>
 
-            <section v-on="click: vote(this, $event)" v-repeat="choices" class="poll__choice  clear-fix">
+            <section v-on="click: vote(this, $event)" v-repeat="poll.choices" class="poll__choice  clear-fix">
                 <a v-on="click: choiceDelete(this, $event)" href="#" class="float-right  icon--cross  link--plain"></a>
                 <div class="choice__name  float-left">{{ name }}</div>
                 <div v-class="light: votes.length == 0" class="choice__votes  float-right">{{ votes.length ? votes.length : 'no' }} votes</div>
@@ -44,7 +44,7 @@
         <section data-ui-component="comments">
             <h3>Comments</h3>
 
-            <article v-repeat="comments" class="comment">
+            <article v-repeat="poll.comments" class="comment">
                 <footer class="comment__footer  clear-fix">
                     <a v-on="click: commentDelete(this, $event)" href="#" class="float-right  icon--cross  link--plain"></a>
                     <span v-text="user.username ? user.username : 'anonymous'" class="comment__author"></span>

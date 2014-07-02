@@ -28,7 +28,7 @@ window.vue = new Vue({
             e.preventDefault();
 
             if (this.isValid) {
-                pollApi.post(this.$data), function(err, res) {
+                pollApi.post(this.$data, function(err, res) {
                     window.location = '/poll.html?id=' + res.body.poll._id;
                 });
             }

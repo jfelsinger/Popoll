@@ -7,7 +7,8 @@
  */
 
 'use strict';
-require('./vendor/es5-shim/es5-shim.min');
 /* jslint browser: true */
+
+require('./vendor/es5-shim/es5-shim.min');
 
 // Code here:

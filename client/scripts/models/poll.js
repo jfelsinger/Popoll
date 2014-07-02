@@ -7,12 +7,12 @@
 'use strict';
 /* jslint browser: true */
 
-var config = require('./config'),
-    lib = require('./lib'),
+var config = require('../config'),
+    lib = require('../lib'),
     request = require('superagent');
 
 // Poll specific methods
-exports = {
+module.exports = {
     getAll: function getAll(cb) {
         request
             .get(config.apiUrl + 'polls')
@@ -26,131 +26,131 @@ exports = {
             .end(lib.respond(cb));
     },
 
-    get: function get(poll_id, cb) {
+    get: function get(pollId, cb) {
         request
-            .get(config.apiUrl + 'poll/' + poll_id)
+            .get(config.apiUrl + 'poll/' + pollId)
             .end(lib.respond(cb));
     },
 
-    put: function put(poll_id, data, cb) {
+    put: function put(pollId, data, cb) {
         request
-            .put(config.apiUrl + 'poll/' + poll_id)
-            .send(data);
+            .put(config.apiUrl + 'poll/' + pollId)
+            .send(data)
             .end(lib.respond(cb));
     },
 
-    del: function del(poll_id, cb) {
+    del: function del(pollId, cb) {
         request
-            .del(config.apiUrl + 'poll/' + poll_id)
+            .del(config.apiUrl + 'poll/' + pollId)
             .end(lib.respond(cb));
     },
 
 };
 
 // Comment specific methods
-exports.comments = {
-    getAll = function getAllComments(poll_id, cb) {
+module.exports.comments = {
+    getAll: function getAllComments(pollId, cb) {
         request
             .get([
-                config.apiUrl + 'poll', poll_id,
+                config.apiUrl + 'poll', pollId,
                 'comments'
             ].join('/'))
             .end(lib.respond(cb));
     },
 
-    post = function postComment(poll_id, data, cb) {
+    post: function postComment(pollId, data, cb) {
         request
             .post([
-                config.apiUrl + 'poll', poll_id,
+                config.apiUrl + 'poll', pollId,
                 'comment'
             ].join('/'))
             .send(data)
             .end(lib.respond(cb));
     },
 
-    get = function getComment(poll_id, comment_id, cb) {
+    get: function getComment(pollId, commentId, cb) {
         request
             .get([
-                config.apiUrl + 'poll', poll_id,
-                'comment', comment_id
+                config.apiUrl + 'poll', pollId,
+                'comment', commentId
             ].join('/'))
             .end(lib.respond(cb));
     },
 
-    put = function putComment(poll_id, comment_id, data, cb) {
+    put: function putComment(pollId, commentId, data, cb) {
         request
             .put([
-                config.apiUrl + 'poll', poll_id,
-                'comment', comment_id
+                config.apiUrl + 'poll', pollId,
+                'comment', commentId
             ].join('/'))
             .send(data)
             .end(lib.respond(cb));
     },
 
-    del = function delComment(poll_id, comment_id, cb) {
+    del: function delComment(pollId, commentId, cb) {
         request
             .del([
-                config.apiUrl + 'poll', poll_id,
-                'comment', comment_id
+                config.apiUrl + 'poll', pollId,
+                'comment', commentId
             ].join('/'))
             .end(lib.respond(cb));
     },
 };
 
 // Choice specific methods
-exports.choices = {
-    getAll = function getAllChoices(poll_id, cb) {
+module.exports.choices = {
+    getAll: function getAllChoices(pollId, cb) {
         request
             .get([
-                config.apiUrl + 'poll', poll_id,
+                config.apiUrl + 'poll', pollId,
                 'choices'
             ].join('/'))
             .end(lib.respond(cb));
     },
 
-    post = function postChoice(poll_id, data, cb) {
+    post: function postChoice(pollId, data, cb) {
         request
             .post([
-                config.apiUrl + 'poll', poll_id,
+                config.apiUrl + 'poll', pollId,
                 'choice'
             ].join('/'))
             .send(data)
             .end(lib.respond(cb));
     },
 
-    get = function getChoice(poll_id, choice_id, cb) {
+    get: function getChoice(pollId, choiceId, cb) {
         request
             .get([
-                config.apiUrl + 'poll', poll_id,
-                'choice', choice_id
+                config.apiUrl + 'poll', pollId,
+                'choice', choiceId
             ].join('/'))
             .end(lib.respond(cb));
     },
 
-    put = function putChoice(poll_id, choice_id, data, cb) {
+    put: function putChoice(pollId, choiceId, data, cb) {
         request
             .put([
-                config.apiUrl + 'poll', poll_id,
-                'choice', choice_id
+                config.apiUrl + 'poll', pollId,
+                'choice', choiceId
             ].join('/'))
             .send(data)
             .end(lib.respond(cb));
     },
 
-    del = function delChoice(poll_id, choice_id, cb) {
+    del: function delChoice(pollId, choiceId, cb) {
         request
             .del([
-                config.apiUrl + 'poll', poll_id,
-                'choice', choice_id
+                config.apiUrl + 'poll', pollId,
+                'choice', choiceId
             ].join('/'))
             .end(lib.respond(cb));
     },
 
-    vote = function vote(poll_id, choice_id, cb) {
+    vote: function vote(pollId, choiceId, cb) {
         request
             .get([
-                config.apiUrl + 'poll', poll_id,
-                'choice', choice_id,
+                config.apiUrl + 'poll', pollId,
+                'choice', choiceId,
                 'vote'
             ].join('/'))
             .end(lib.respond(cb));
