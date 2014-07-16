@@ -104,10 +104,18 @@ choices.post = function(req, res) {
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
+            var choice = {
+                name: req.body.name
+            };
 
-            poll.addOption(req.body.name, function(err) {
+            poll.choices.push(choice);
+
+            poll.save(function(err) {
                 if (err) res.send(500, err);
-                res.json(201, { message: 'Option created!' });
+                res.json(201, { 
+                    message: 'Option created!',
+                    id: poll.choices[poll.choices.length-1]._id
+                });
             });
         });
 };
@@ -195,13 +203,18 @@ comments.post = function(req, res) {
         .exec(function(err, poll) {
             if (err) res.send(500, err);
 
-            poll.comments.push({
+            var comment = {
                 body: req.body.body
-            });
+            };
+
+            poll.comments.push(comment);
 
             poll.save(function(err) {
                 if (err) res.send(500, err);
-                res.json(201, { message: 'Comments created!' });
+                res.json(201, { 
+                    message: 'Comments created!',
+                    id: poll.comments[poll.comments.length-1]._id
+                });
             });
         });
 

@@ -47,9 +47,10 @@ window.vue = new Vue({
 
     methods: {
         fetchData: function fetchData() {
-            var pollId = lib.getQueryValue('id');
+            var pollId = lib.getQueryValue('id') || lib.parameters[1];
             var self = this;
 
+            console.log(pollId);
             pollApi.get(pollId, function(err, res) {
                 self.poll = res.body;
             });
@@ -63,10 +64,15 @@ window.vue = new Vue({
             var self = this;
 
             if (this.newChoice) {
-                var choice = { name: this.newChoice };
+                var choice = { 
+                    name: this.newChoice,
+                    votes: []
+                };
 
-                pollApi.choices.post(this.poll._id, choice, function() {
-                    self.choices.push(choice);
+                pollApi.choices.post(this.poll._id, choice, function(err, res) {
+                    console.log(res);
+                    choice._id = res.body.id;
+                    self.poll.choices.push(choice);
                     self.newChoice = '';
                 });
             }
@@ -77,10 +83,11 @@ window.vue = new Vue({
             var pollId = this.poll._id;
 
             e.preventDefault();
+            e.stopPropagation();
 
             pollApi.choices.del(pollId, choice._id, function(err,res) {
                 console.log(res);
-                self.choices.$remove(choice.$data);
+                self.poll.choices.$remove(choice.$data);
             });
         },
 
@@ -114,8 +121,9 @@ window.vue = new Vue({
                 
                 pollApi.comments.post(this.poll._id, comment, function(err, res) {
                     console.log(res);
+                    comment._id = res.body.id;
                     self.newCommentBody = '';
-                    self.comments.push(comment);
+                    self.poll.comments.push(comment);
                 });
             }
         },
@@ -124,10 +132,11 @@ window.vue = new Vue({
             var self = this;
 
             e.preventDefault();
+            e.stopPropagation();
 
             pollApi.comments.del(this.poll._id, comment._id, function(err, res) {
                 console.log(res);
-                self.comments.$remove(comment.$data);
+                self.poll.comments.$remove(comment.$data);
             });
         },
     },

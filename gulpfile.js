@@ -173,9 +173,9 @@ gulp.task('mocha', function() {
 gulp.task('lint', function() {
     return gulp.src([
             'gulpfile.js',
-            '<%= yeoman.app %>/{,*/}*.js',
-            '<%= yeoman.config %>/{,*/}*.js',
-            'test/{,*/}*.js'
+            '<%= yeoman.app %>/**/*.js',
+            '<%= yeoman.config %>/**/*.js',
+            'test/**/*.js'
         ])
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
@@ -188,7 +188,7 @@ gulp.task('client', ['clean', 'bower'], function() {
 
 gulp.task('test', ['lint', 'mocha']);
 
-gulp.task('app', function() {
+gulp.task('app', ['lint'], function() {
     return nodemon({
             script: 'server.js',
             ignore: [

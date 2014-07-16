@@ -42,13 +42,6 @@ PollSchema.methods = {
 
     },
 
-    addOption: function(optionName, cb) {
-        this.choices.push({
-            name: optionName
-        });
-        this.save(cb);
-    },
-
     deleteComment: function(optionId, cb) {
         this.choices.id(optionId).remove();
         this.save(cb);

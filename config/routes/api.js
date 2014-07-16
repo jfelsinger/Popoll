@@ -1,11 +1,10 @@
 var async = require('async'),
-    express = require('express'),
-    config = require('./config');
+    express = require('express');
 
 module.exports = function(app) {
     var router = express.Router();
 
-    var polls = require('../app/controllers/api/polls');
+    var polls = require('../../app/controllers/api/polls');
 
     // Poll routes
     // ------------------------------------------------

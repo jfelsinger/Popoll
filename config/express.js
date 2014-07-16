@@ -1,15 +1,28 @@
 var express = require('express'),
+    layout = require('express-layout'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
     methodOverride = require('method-override'),
+    hbs = require('hbs'),
+    swag = require('swag'),
     mongoStore = require('connect-mongo')(session);
 
 var config = require('./config');
 
 module.exports = function(app) {
     app.set('showStackError', true);
+
+    // Setup view engine
+    hbs.registerPartials(__dirname + '/../views/partials');
+    swag.registerHelpers(hbs);
+
+    app.use(layout());
+    app.set('layouts', 'views/layouts');
+    app.set('layout', 'main.html');
+    app.set('view engine', 'html');
+    app.engine('html', hbs.__express);
 
     // No logger on test environment
     if (process.env.NODE_ENV !== 'test') {
@@ -36,7 +49,9 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({ extended: true }));
 
     // Continue to routing, 
-    require('./routes')(app);
+    require('./routes/controllers')(app);
+    require('./routes/api')(app);
+    require('./routes/static')(app);
 
     // 500 Error
     app.use(function(err, req, res, next) {

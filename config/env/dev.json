@@ -1,5 +1,6 @@
 {
     "db": "mongodb://localhost/venm-dev",
+    "staticFiles": "client",
     "app": {
         "name": "popoll - Dev"
     }
