@@ -12,9 +12,9 @@
  * 
  */ 
 
-$base-font-size: 16px;
+$base-font-size: 26px;
 $base-line-height: 1.618;
-$max-site-width: 960px;
+$max-site-width: $gbp-huge;
 
 $unit: $base-font-size * $base-line-height;
 
@@ -32,9 +32,19 @@ body {
     font-size: $base-font-size;
     line-height: $base-line-height;
     text-align: center;
-    padding: unit() unit(4);
+    padding: 0 unit(1) unit(1);
     background: $c-body;
     overflow-x: hidden;
+
+    @include breakpoint($gbp-medium) {
+        padding-left:  unit(2);
+        padding-right: unit(2);
+    }
+
+    @include breakpoint($gbp-large) {
+        padding-left:  unit(4);
+        padding-right: unit(4);
+    }
 }
 
     %wrapper {
@@ -59,8 +69,16 @@ body {
     }
         .light { @extend %light; }
 
+    %animate {
+        max-height: unit(5);
+        transition: all .75s ease;
+    }
+        .animate { @extend %animate; }
+
     %invisible {
+        max-height: 0;
         opacity: 0;
+        overflow: hidden;
         pointer-events: none;
     }
         .invisible { @extend %invisible; }

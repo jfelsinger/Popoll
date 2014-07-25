@@ -17,8 +17,9 @@
 \*-------------------------------------*/
 
 %input {
+    color: $c-gray;
     padding: unit(.25);
-    border: 1px solid #e0e0e0;
+    border: 2px solid $c-orange;
     background: #d8eff3;
 
     outline: 0;

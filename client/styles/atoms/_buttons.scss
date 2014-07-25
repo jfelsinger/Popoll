@@ -18,15 +18,19 @@ button {
     font-weight: bold;
     padding: unit(.25) 0;
     border: 0;
-    background: #4eadec;
+    background: $c-red--darker;
     outline: 0;
 
     @include border-radius(6px);
     @include transition(opacity .5s);
-    @include box-shadow((
-        0 2px 2px #e0e0e0
-    ));
 
+    &:focus,
+    &:hover {
+        background: $c-red--dark;
+    }
+}
+
+.button--illuminated {
     &:focus,
     &:hover {
         background: #6cc1fa;
@@ -36,6 +40,6 @@ button {
 .button--jiggly {
     &:focus,
     &:hover {
-        @include animation(jiggle .25s);
+        @include animation(jiggle .28s);
     }
 }

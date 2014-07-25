@@ -29,49 +29,73 @@
 }
 
     %poll__choice {
+        @extend %poll-list__item;
+
         overflow: hidden;
-        padding: unit(.5) unit(1);
-        border: 1px dashed #cdcdcd;
-        margin-bottom: 1em;
+        background: transparent;
         position: relative;
+
+        @include background-image(linear-gradient(
+            left, 
+            transparent 50%,
+            $c-red--dark 51%,
+            transparent 51%,
+            transparent
+        ));
 
         &:hover {
             cursor: pointer;
-            border: 1px solid #cdcdcd;
+
+            @include box-shadow((
+                0 0 0 4px $c-red--darker,
+                0 2px 6px shade($c-red--lighter, 8) inset
+            ));
         }
 
-        @include border-radius(6px);
-
-        @include box-shadow((
-            0 0 0 1px rgba(0,0,0,.1) inset,
-            0 0 2px rgba(0,0,0,.18) inset,
-            0 0 1px 1px rgba(255,255,255,.45)
-        ));
+        &:nth-of-type(8n+1) %choice__meter {
+            background: $c-contrast--1;
+        }
+        &:nth-of-type(8n+2) %choice__meter,
+        &:nth-of-type(8n) %choice__meter {
+            background: $c-contrast--2;
+        }
+        &:nth-of-type(8n+3) %choice__meter,
+        &:nth-of-type(8n+7) %choice__meter {
+            background: $c-contrast--3;
+        }
+        &:nth-of-type(8n+4) %choice__meter,
+        &:nth-of-type(8n+6) %choice__meter {
+            background: $c-contrast--4;
+        }
+        &:nth-of-type(8n+5) %choice__meter {
+            background: $c-contrast--5;
+        }
     }
         
         %choice__name {
+            position: relative;
+            z-index: 2;
         }
 
         %choice__votes {
+            position: relative;
+            z-index: 2;
         }
 
         %choice__meter {
             display: block;
-            background: #e99566;
-            height: unit(2);
+            background: $c-contrast--1;
+            height: unit(8);
 
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: 1;
 
             @include border-radius(1px);
-
-            @include transition(width .75s ease);
-
-
+            @include transition(width .65s ease);
             @include box-shadow((
-                0 1px 6px rgba(0,0,0,.35) inset
+                0 1px 3px shade($c-red--lighter, 22)
             ));
         }
 

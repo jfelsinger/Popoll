@@ -61,6 +61,7 @@ gulp.task('styles', function() {
             style: 'expanded',
             css: dir.client + '/styles',
             sass: dir.client + '/styles',
+            require: ['breakpoint']
         }))
         .pipe(autoprefixer())
         .pipe(gulp.dest(dir.client + '/styles'))
@@ -149,7 +150,10 @@ gulp.task('watch', ['app', 'client'], function() {
     gulp.watch(dir.client + '/scripts/**/*.js', ['clientScripts']);
 
     // Watch server scripts
-    gulp.watch(dir.app + '/{,*/}*.js', ['app-restart']);
+    gulp.watch(dir.app + '/**/*.js', ['app-restart']);
+
+    // Watch views
+    gulp.watch('views/**', ['app-restart']);
 
     // Watch image files
     gulp.watch(dir.client + '/images/{,*/}*.{png,jpg,jpeg}', ['images']);
@@ -209,7 +213,8 @@ gulp.task('app', ['lint'], function() {
 });
 
 gulp.task('app-restart', function() {
-    nodemon.emit('restart');
+    if (nodemon.emit)
+        nodemon.emit('restart');
 });
 
 /** Build it all up and serve it */

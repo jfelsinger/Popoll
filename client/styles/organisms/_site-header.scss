@@ -1,0 +1,58 @@
+/*-------------------------------------*\
+    SITEHEADER
+\*-------------------------------------*/
+
+/**
+ * Site Header 
+ * 
+ * 
+ * 
+    
+ * 
+ */ 
+ 
+.site__header {
+    color: $c-orange;
+    font-family: $f-lily;
+}
+
+    .site__navigation {
+        font-size: 1.25em;
+        padding-top: unit(1.5);
+        margin: 0;
+
+        @include text-shadow(
+            0 1px 1px shade($c-red, 28)
+        );
+    }
+
+    .site__title {
+        font-size: 3.25em;
+        margin: 0;
+
+        @include text-shadow((
+            0 0 1px shade($c-red, 20),
+            0 1px 0 $c-red,
+            1px 1px 0 $c-red,
+            -1px 1px 0 $c-red,
+            0 2px 0 $c-red,
+            2px 2px 0 $c-red,
+            -2px 2px 0 $c-red,
+
+            2px 3px 1px shade($c-red, 20),
+            -2px 3px 1px shade($c-red, 20),
+
+            1px 4px 0 shade($c-red, 20),
+            -1px 4px 0 shade($c-red, 20),
+            0 5px 0 shade($c-red, 20),
+        ));
+    }
+
+    .site__tagline {
+        color: #fff;
+        font-family: $f-lato;
+        font-size: 1.2em;
+        font-weight: 600;
+
+        margin-bottom: unit(.25);
+    }

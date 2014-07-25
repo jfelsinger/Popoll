@@ -29,7 +29,7 @@ window.vue = new Vue({
 
             if (this.isValid) {
                 pollApi.post(this.$data, function(err, res) {
-                    window.location = '/poll.html?id=' + res.body.poll._id;
+                    window.location = '/poll/' + res.body.poll._id;
                 });
             }
         },

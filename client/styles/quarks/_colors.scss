@@ -32,6 +32,26 @@
     Base Colors
 \*-------------------------------------*/
 
+/* orange */
+$c-orange:  #f6794d;
+
+/* red */
+$c-red--lighter:    #eb4747;
+$c-red--light:      #e15864;
+$c-red:             #ea4141;
+$c-red--dark:       #c93838;
+$c-red--darker:     #a33131;
+
+/* contrast */
+$c-contrast--1:     #bb56af;
+$c-contrast--2:     #aa56af;
+$c-contrast--3:     #7c6daf;
+$c-contrast--4:     #818fb0;
+$c-contrast--5:     #7c99af;
+
+/* gray */
+$c-gray:            #2e2e2e;
+
 
 
 
@@ -40,5 +60,5 @@
     Site Colors
 \*-------------------------------------*/
 
-$c-text:   #424242; 
-$c-body:   #f7f7f7; 
+$c-text:   #fff; 
+$c-body:   $c-red;

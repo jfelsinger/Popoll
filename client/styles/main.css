@@ -1529,6 +1529,10 @@ th {
 /*-------------------------------------*\
     Base Colors
 \*-------------------------------------*/
+/* orange */
+/* red */
+/* contrast */
+/* gray */
 /*-------------------------------------*\
     Site Colors
 \*-------------------------------------*/
@@ -1921,41 +1925,64 @@ th {
 
 /* line 29, utilities/_global.scss */
 body {
-  color: #424242;
-  font-family: verdana, arial, sans-serif;
-  font-size: 16px;
+  color: white;
+  font-family: "Lato", arial, sans-serif;
+  font-size: 26px;
   line-height: 1.618;
   text-align: center;
-  padding: 25.888px 103.552px;
-  background: #f7f7f7;
+  padding: 0 42.068px 42.068px;
+  background: #ea4141;
   overflow-x: hidden;
 }
-
-/* line 40, utilities/_global.scss */
-.wrapper {
-  text-align: left;
-  max-width: 960px;
+@media (min-width: 740px) {
+  /* line 29, utilities/_global.scss */
+  body {
+    padding-left: 84.136px;
+    padding-right: 84.136px;
+  }
+}
+@media (min-width: 960px) {
+  /* line 29, utilities/_global.scss */
+  body {
+    padding-left: 168.272px;
+    padding-right: 168.272px;
+  }
 }
 
-/* line 46, utilities/_global.scss */
+/* line 50, utilities/_global.scss */
+.wrapper {
+  text-align: left;
+  max-width: 1080px;
+}
+
+/* line 56, utilities/_global.scss */
 .scroll-fix {
   width: 100%;
   overflow: hidden;
 }
 
-/* line 52, utilities/_global.scss */
+/* line 62, utilities/_global.scss */
 .one-line {
   margin-bottom: 0;
 }
 
-/* line 57, utilities/_global.scss */
+/* line 67, utilities/_global.scss */
 .light {
   opacity: .75;
 }
 
-/* line 62, utilities/_global.scss */
+/* line 72, utilities/_global.scss */
+.animate {
+  max-height: 210.34px;
+  -webkit-transition: all .75s ease;
+  transition: all .75s ease;
+}
+
+/* line 78, utilities/_global.scss */
 .invisible {
+  max-height: 0;
   opacity: 0;
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -2003,7 +2030,7 @@ body {
 }
 
 /* line 36, utilities/_alignment.scss */
-.clear-fix:after, .poll-list__item:after {
+.clear-fix:after, .poll-list__item:after, .poll__choice:after {
   content: "";
   display: table;
   clear: both;
@@ -2060,52 +2087,52 @@ body {
 \*-------------------------------------*/
 /* line 22, utilities/_nudge.scss */
 .nudge {
-  margin: 25.888px;
+  margin: 42.068px;
 }
 
 /* line 23, utilities/_nudge.scss */
 .nudge--top {
-  margin-top: 25.888px;
+  margin-top: 42.068px;
 }
 
 /* line 24, utilities/_nudge.scss */
 .nudge--right {
-  margin-right: 25.888px;
+  margin-right: 42.068px;
 }
 
 /* line 25, utilities/_nudge.scss */
 .nudge--bottom {
-  margin-bottom: 25.888px;
+  margin-bottom: 42.068px;
 }
 
 /* line 26, utilities/_nudge.scss */
 .nudge--left {
-  margin-left: 25.888px;
+  margin-left: 42.068px;
 }
 
 /* line 28, utilities/_nudge.scss */
 .nudge-half {
-  margin: 12.944px;
+  margin: 21.034px;
 }
 
 /* line 29, utilities/_nudge.scss */
 .nudge-half--top {
-  margin-top: 12.944px;
+  margin-top: 21.034px;
 }
 
 /* line 30, utilities/_nudge.scss */
 .nudge-half--right {
-  margin-right: 12.944px;
+  margin-right: 21.034px;
 }
 
 /* line 31, utilities/_nudge.scss */
 .nudge-half--bottom {
-  margin-bottom: 12.944px;
+  margin-bottom: 21.034px;
 }
 
 /* line 32, utilities/_nudge.scss */
 .nudge-half--left {
-  margin-left: 12.944px;
+  margin-left: 21.034px;
 }
 
 /*-------------------------------------*\
@@ -2129,42 +2156,42 @@ body {
 \*-------------------------------------*/
 /* line 22, utilities/_pad.scss */
 .pad--top {
-  padding-top: 25.888px;
+  padding-top: 42.068px;
 }
 
 /* line 23, utilities/_pad.scss */
 .pad--right {
-  padding-right: 25.888px;
+  padding-right: 42.068px;
 }
 
 /* line 24, utilities/_pad.scss */
 .pad--bottom {
-  padding-bottom: 25.888px;
+  padding-bottom: 42.068px;
 }
 
 /* line 25, utilities/_pad.scss */
 .pad--left {
-  padding-left: 25.888px;
+  padding-left: 42.068px;
 }
 
 /* line 27, utilities/_pad.scss */
 .pad-half--top {
-  padding-top: 12.944px;
+  padding-top: 21.034px;
 }
 
 /* line 28, utilities/_pad.scss */
 .pad-half--right {
-  padding-right: 12.944px;
+  padding-right: 21.034px;
 }
 
 /* line 29, utilities/_pad.scss */
 .pad-half--bottom {
-  padding-bottom: 12.944px;
+  padding-bottom: 21.034px;
 }
 
 /* line 30, utilities/_pad.scss */
 .pad-half--left {
-  padding-left: 12.944px;
+  padding-left: 21.034px;
 }
 
 /*-------------------------------------*\
@@ -2203,27 +2230,30 @@ p {
 button {
   color: #fff;
   font-weight: bold;
-  padding: 6.472px 0;
+  padding: 10.517px 0;
   border: 0;
-  background: #4eadec;
+  background: #a33131;
   outline: 0;
   border-radius: 6px;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
-  -webkit-box-shadow: 0 2px 2px #e0e0e0;
-  box-shadow: 0 2px 2px #e0e0e0;
 }
-/* line 30, atoms/_buttons.scss */
+/* line 27, atoms/_buttons.scss */
 .button:focus, .button:hover,
 button:focus,
 button:hover {
+  background: #c93838;
+}
+
+/* line 34, atoms/_buttons.scss */
+.button--illuminated:focus, .button--illuminated:hover {
   background: #6cc1fa;
 }
 
-/* line 37, atoms/_buttons.scss */
+/* line 41, atoms/_buttons.scss */
 .button--jiggly:focus, .button--jiggly:hover {
-  -webkit-animation: jiggle 0.25s;
-  animation: jiggle 0.25s;
+  -webkit-animation: jiggle 0.28s;
+  animation: jiggle 0.28s;
 }
 
 /*-------------------------------------*\
@@ -2417,8 +2447,9 @@ a {
 \*-------------------------------------*/
 /* line 19, atoms/_forms.scss */
 .textarea, .input {
-  padding: 6.472px;
-  border: 1px solid #e0e0e0;
+  color: #2e2e2e;
+  padding: 10.517px;
+  border: 2px solid #f6794d;
   background: #d8eff3;
   outline: 0;
   border-radius: 4px;
@@ -2426,10 +2457,10 @@ a {
   box-shadow: 0 1px 2px #acacac inset;
 }
 
-/* line 32, atoms/_forms.scss */
+/* line 33, atoms/_forms.scss */
 .textarea {
   font-size: .75em;
-  min-height: 90.608px;
+  min-height: 147.238px;
 }
 
 /*-------------------------------------*\
@@ -2471,47 +2502,95 @@ a {
     Base
 \*-------------------------------------*/
 /* line 31, molecules/_poll-list.scss */
-.poll-list__item {
+.poll-list__item, .poll__choice {
   color: #fff;
-  padding: 6.472px;
-  margin-bottom: 12.944px;
-  background: #e95b40;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px #cacaca;
-  box-shadow: 0 1px #cacaca;
+  padding: 10.517px 21.034px;
+  margin-bottom: 31.551px;
+  background: #eb4747;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 4px #c93838, 0 2px 6px #d84141 inset;
+  box-shadow: 0 0 0 4px #c93838, 0 2px 6px #d84141 inset;
 }
 
-/* line 43, molecules/_poll-list.scss */
+/* line 46, molecules/_poll-list.scss */
 .poll-list__question {
   padding: 0;
   margin: 0;
+  text-shadow: 0 1px 1px #b03535;
 }
 
-/* line 48, molecules/_poll-list.scss */
+/* line 55, molecules/_poll-list.scss */
+.poll-list__options {
+  font-family: "Lato", arial, sans-serif;
+  font-size: .65em;
+  font-weight: 100;
+  border: 2px solid #c93838;
+  padding: 10.517px 21.034px;
+  margin: 10.517px 0;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 50%, #c93838 51%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0));
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(0, 0, 0, 0)), color-stop(51%, #c93838), color-stop(51%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, #c93838 51%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0));
+}
+/* line 71, molecules/_poll-list.scss */
+.poll-list__options li {
+  margin-bottom: 10.517px;
+}
+/* line 73, molecules/_poll-list.scss */
+.poll-list__options li:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 10.517px;
+  background: #bb56af;
+  -webkit-box-shadow: 0 1px 2px #c03a3a;
+  box-shadow: 0 1px 2px #c03a3a;
+}
+/* line 86, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+1):after {
+  background: #bb56af;
+}
+/* line 89, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+2):after, .poll-list__options li:nth-of-type(8n):after {
+  background: #aa56af;
+}
+/* line 93, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+3):after, .poll-list__options li:nth-of-type(8n+7):after {
+  background: #7c6daf;
+}
+/* line 97, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+4):after, .poll-list__options li:nth-of-type(8n+6):after {
+  background: #818fb0;
+}
+/* line 101, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+5):after {
+  background: #7c99af;
+}
+
+/* line 107, molecules/_poll-list.scss */
 .poll-list__answer {
   font-weight: normal;
   padding: 0;
   margin: 0;
 }
 
-/* line 54, molecules/_poll-list.scss */
+/* line 113, molecules/_poll-list.scss */
 .poll-list__actions {
   color: #333;
 }
 
-/* line 58, molecules/_poll-list.scss */
+/* line 117, molecules/_poll-list.scss */
 .poll-list__time {
   color: #fff;
-  padding: 1.618px 3.8832px;
+  padding: 2.62925px 6.3102px;
   background: #ea934e;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px #ea930e;
   box-shadow: 0 1px #ea930e;
 }
 
-/* line 67, molecules/_poll-list.scss */
+/* line 126, molecules/_poll-list.scss */
 .poll-list__watch {
-  padding: 6.472px;
+  padding: 10.517px;
 }
 
 /*-------------------------------------*\
@@ -2533,34 +2612,14 @@ a {
 \*-------------------------------------*/
 /* line 22, molecules/_poll-form.scss */
 .poll-form__input {
-  padding: 6.472px 0;
-  border: 1px solid #e0e0e0;
+  color: #2e2e2e;
+  padding: 10.517px 0;
   background: #d8eff3;
+  border: 0;
   outline: 0;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 2px #acacac inset;
-  box-shadow: 0 1px 2px #acacac inset;
-}
-
-/* line 35, molecules/_poll-form.scss */
-.poll-form__button {
-  color: #fff;
-  font-weight: bold;
-  padding: 6.472px 0;
-  border: 0;
-  background: #4eadec;
-  outline: 0;
-  border-radius: 6px;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-  -webkit-box-shadow: 0 2px 2px #e0e0e0;
-  box-shadow: 0 2px 2px #e0e0e0;
-}
-/* line 49, molecules/_poll-form.scss */
-.poll-form__button:focus, .poll-form__button:hover {
-  background: #6cc1fa;
-  -webkit-animation: jiggle 0.25s;
-  animation: jiggle 0.25s;
+  -webkit-box-shadow: 0 2px 4px #b1c3c7 inset, 0 0 0 2px #f6794d;
+  box-shadow: 0 2px 4px #b1c3c7 inset, 0 0 0 2px #f6794d;
 }
 
 /*-------------------------------------*\
@@ -2593,34 +2652,65 @@ a {
 /* line 31, molecules/_poll-choices.scss */
 .poll__choice {
   overflow: hidden;
-  padding: 12.944px 25.888px;
-  border: 1px dashed #cdcdcd;
-  margin-bottom: 1em;
+  background: transparent;
   position: relative;
-  border-radius: 6px;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 2px rgba(0, 0, 0, 0.18) inset, 0 0 1px 1px rgba(255, 255, 255, 0.45);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 0 2px rgba(0, 0, 0, 0.18) inset, 0 0 1px 1px rgba(255, 255, 255, 0.45);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 50%, #c93838 51%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0));
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(0, 0, 0, 0)), color-stop(51%, #c93838), color-stop(51%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, #c93838 51%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0));
 }
-/* line 38, molecules/_poll-choices.scss */
+/* line 46, molecules/_poll-choices.scss */
 .poll__choice:hover {
   cursor: pointer;
-  border: 1px solid #cdcdcd;
+  -webkit-box-shadow: 0 0 0 4px #a33131, 0 2px 6px #d84141 inset;
+  box-shadow: 0 0 0 4px #a33131, 0 2px 6px #d84141 inset;
+}
+/* line 55, molecules/_poll-choices.scss */
+.poll__choice:nth-of-type(8n+1) .choice__meter {
+  background: #bb56af;
+}
+/* line 58, molecules/_poll-choices.scss */
+.poll__choice:nth-of-type(8n+2) .choice__meter, .poll__choice:nth-of-type(8n) .choice__meter {
+  background: #aa56af;
+}
+/* line 62, molecules/_poll-choices.scss */
+.poll__choice:nth-of-type(8n+3) .choice__meter, .poll__choice:nth-of-type(8n+7) .choice__meter {
+  background: #7c6daf;
+}
+/* line 66, molecules/_poll-choices.scss */
+.poll__choice:nth-of-type(8n+4) .choice__meter, .poll__choice:nth-of-type(8n+6) .choice__meter {
+  background: #818fb0;
+}
+/* line 70, molecules/_poll-choices.scss */
+.poll__choice:nth-of-type(8n+5) .choice__meter {
+  background: #7c99af;
 }
 
-/* line 58, molecules/_poll-choices.scss */
+/* line 75, molecules/_poll-choices.scss */
+.choice__name {
+  position: relative;
+  z-index: 2;
+}
+
+/* line 80, molecules/_poll-choices.scss */
+.choice__votes {
+  position: relative;
+  z-index: 2;
+}
+
+/* line 85, molecules/_poll-choices.scss */
 .choice__meter {
   display: block;
-  background: #e99566;
-  height: 51.776px;
+  background: #bb56af;
+  height: 336.544px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
   border-radius: 1px;
-  -webkit-transition: width 0.75s ease;
-  transition: width 0.75s ease;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) inset;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) inset;
+  -webkit-transition: width 0.65s ease;
+  transition: width 0.65s ease;
+  -webkit-box-shadow: 0 1px 3px #b73737;
+  box-shadow: 0 1px 3px #b73737;
 }
 
 /*-------------------------------------*\
@@ -2648,17 +2738,59 @@ a {
 /* line 26, organisms/_comments.scss */
 .comment {
   border-left: 1px solid #e0e0e0;
-  padding-left: 6.472px;
+  padding-left: 10.517px;
 }
 
 /* line 31, organisms/_comments.scss */
 .comment__footer {
-  font-size: 13px;
+  font-size: .7em;
 }
 
 /*-------------------------------------*\
     Implementation
 \*-------------------------------------*/
+/*-------------------------------------*\
+    SITEHEADER
+\*-------------------------------------*/
+/**
+ * Site Header 
+ * 
+ * 
+ * 
+    
+ * 
+ */
+/* line 14, organisms/_site-header.scss */
+.site__header {
+  color: #f6794d;
+  font-family: "Lily Script One", cursive;
+}
+
+/* line 19, organisms/_site-header.scss */
+.site__navigation {
+  font-size: 1.25em;
+  padding-top: 63.102px;
+  margin: 0;
+  text-shadow: 0 1px 1px #a82e2e;
+}
+
+/* line 29, organisms/_site-header.scss */
+.site__title {
+  font-size: 3.25em;
+  margin: 0;
+  text-shadow: 0 0 1px #bb3434 0 1px 0 #ea4141 1px 1px 0 #ea4141 0 2px 0 #ea4141;
+  text-shadow: 0 0 1px #bb3434, 0 1px 0 #ea4141, 1px 1px 0 #ea4141, -1px 1px 0 #ea4141, 0 2px 0 #ea4141, 2px 2px 0 #ea4141, -2px 2px 0 #ea4141, 2px 3px 1px #bb3434, -2px 3px 1px #bb3434, 1px 4px 0 #bb3434, -1px 4px 0 #bb3434, 0 5px 0 #bb3434;
+}
+
+/* line 51, organisms/_site-header.scss */
+.site__tagline {
+  color: #fff;
+  font-family: "Lato", arial, sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 10.517px;
+}
+
 /*---   Pages   ---*/
 /*---   Shame   ---*/
 /*-------------------------------------*\

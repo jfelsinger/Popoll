@@ -1,6 +1,4 @@
-/**
- * Module Dependencies
- */
+/* Dependencies */
 
 exports.render = function(req, res) {
     'use strict';

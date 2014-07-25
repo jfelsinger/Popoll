@@ -32,17 +32,76 @@
         @extend %clear-fix;
 
         color: #fff;
-        padding: unit(.25);
-        margin-bottom: unit(.5);
-        background: #e95b40;
+        padding: unit(.25) unit(.5);
+        margin-bottom: unit(.75);
+        background: $c-red--lighter;
 
-        @include border-radius(4px);
-        @include box-shadow(0 1px #cacaca);
+        @include border-radius(6px);
+        @include box-shadow((
+            0 0 0 4px $c-red--dark,
+            0 2px 6px shade($c-red--lighter, 8) inset
+        ));
     }
 
         %poll-list__question {
             padding: 0;
             margin: 0;
+
+            @include text-shadow((
+                0 1px 1px shade($c-red--lighter, 25)
+            ))
+        }
+
+        %poll-list__options {
+            font-family: $f-lato;
+            font-size: .65em;
+            font-weight: 100;
+            border: 2px solid $c-red--dark;
+            padding: unit(.25) unit(.5);
+            margin: unit(.25) 0;
+
+            @include background-image(linear-gradient(
+                left, 
+                transparent 50%,
+                $c-red--dark 51%,
+                transparent 51%,
+                transparent
+            ));
+
+            li {
+                margin-bottom: unit(.25);
+                &:after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: unit(.25);
+                    background: $c-contrast--1;
+                    
+                    @include box-shadow((
+                        0 1px 2px shade($c-red--lighter, 18)
+                    ));
+                }
+
+
+                &:nth-of-type(8n+1):after {
+                    background: $c-contrast--1;
+                }
+                &:nth-of-type(8n+2):after,
+                &:nth-of-type(8n):after {
+                    background: $c-contrast--2;
+                }
+                &:nth-of-type(8n+3):after,
+                &:nth-of-type(8n+7):after {
+                    background: $c-contrast--3;
+                }
+                &:nth-of-type(8n+4):after,
+                &:nth-of-type(8n+6):after {
+                    background: $c-contrast--4;
+                }
+                &:nth-of-type(8n+5):after {
+                    background: $c-contrast--5;
+                }
+            }
         }
 
         %poll-list__answer {
@@ -79,6 +138,7 @@
  .poll-list { @extend %poll-list !optional; }
      .poll-list__item { @extend %poll-list__item !optional; }
          .poll-list__question { @extend %poll-list__question !optional; }
+         .poll-list__options { @extend %poll-list__options !optional; }
          .poll-list__answer   { @extend %poll-list__answer   !optional; }
          .poll-list__actions  { @extend %poll-list__actions  !optional; }
              .poll-list__time  { @extend %poll-list__time  !optional; }
