@@ -30,18 +30,28 @@
 
     %poll-list__item {
         @extend %clear-fix;
+        @extend %accordion__item;
 
         color: #fff;
         padding: unit(.25) unit(.5);
         margin-bottom: unit(.75);
         background: $c-red--lighter;
+        overflow: hidden;
 
         @include border-radius(6px);
         @include box-shadow((
             0 0 0 4px $c-red--dark,
             0 2px 6px shade($c-red--lighter, 8) inset
         ));
+
+        &:hover {
+            max-height: 600px;
+        }
     }
+
+        %poll-list__item--closed {
+            max-height: 64px;
+        }
 
         %poll-list__question {
             padding: 0;
@@ -137,6 +147,7 @@
  
  .poll-list { @extend %poll-list !optional; }
      .poll-list__item { @extend %poll-list__item !optional; }
+     .poll-list__item--closed { @extend %poll-list__item--closed !optional; }
          .poll-list__question { @extend %poll-list__question !optional; }
          .poll-list__options { @extend %poll-list__options !optional; }
          .poll-list__answer   { @extend %poll-list__answer   !optional; }

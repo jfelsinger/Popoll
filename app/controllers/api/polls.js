@@ -16,6 +16,17 @@ exports.getPublic = function(req, res) {
         });
 };
 
+exports.getRecent = function(req, res) {
+    Poll.find()
+        .populate('user', 'name email username')
+        .populate('comments.user', 'name email username')
+        .populate('choices.votes.user', 'name email username')
+        .exec(function(err, polls) {
+            if (err) res.send(500, err);
+            res.json(polls);
+        });
+};
+
 exports.get = function(req, res) {
     console.log(req.params.poll_id);
 

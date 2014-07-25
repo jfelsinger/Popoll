@@ -1,0 +1,45 @@
+/*-------------------------------------*\
+    ACCORDION
+\*-------------------------------------*/
+
+/**
+ * Accordion 
+ * 
+ **
+ * Base
+ * Implementation
+ *
+
+ * 
+ */ 
+ 
+ 
+/*-------------------------------------*\
+    Base
+\*-------------------------------------*/
+
+%accordion {
+}
+
+    %accordion__item {
+        overflow: hidden;
+        max-height: 600px;
+        transition: max-height 1s ease;
+    }
+
+        %accordion__item--closed {
+            max-height: 0;
+        }
+
+
+
+
+
+/*-------------------------------------*\
+    Implementation
+\*-------------------------------------*/
+
+
+
+
+

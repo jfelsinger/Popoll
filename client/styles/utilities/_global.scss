@@ -41,7 +41,7 @@ body {
         padding-right: unit(2);
     }
 
-    @include breakpoint($gbp-large) {
+    @include breakpoint($gbp-huge) {
         padding-left:  unit(4);
         padding-right: unit(4);
     }
