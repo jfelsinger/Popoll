@@ -12,6 +12,7 @@ var UserSchema = new Schema({
     hashed_password: String,
     salt: String,
     facebook: {},
+    google: {},
     twitter: {},
     github: {},
     friends: [{ type: Schema.ObjectId, ref: 'User' }],

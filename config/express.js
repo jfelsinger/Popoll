@@ -7,6 +7,7 @@ var express = require('express'),
     methodOverride = require('method-override'),
     hbs = require('hbs'),
     swag = require('swag'),
+    passport = require('passport'),
     mongoStore = require('connect-mongo')(session);
 
 var config = require('./config');
@@ -44,11 +45,17 @@ module.exports = function(app) {
         })
     }));
 
+    // Setup passport
+    require('./passport')(passport);
+    app.use(passport.initialize());
+    app.use(passport.session());
+
     // parse application/json
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
     // Continue to routing, 
+    require('./routes/auth')(app, passport);
     require('./routes/controllers')(app);
     require('./routes/api')(app);
     require('./routes/static')(app);

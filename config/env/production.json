@@ -1,6 +1,7 @@
 {
     "db": "mongodb://localhost/venm-production",
     "staticFiles": "dist",
+    "url": "http://poshpoll.com"
     "app": {
         "name": "popoll - Production"
     }
