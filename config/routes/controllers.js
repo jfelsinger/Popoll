@@ -10,10 +10,11 @@ module.exports = function(app) {
     router.get('/', routeToController);
     router.get('/:page', routeToController);
     router.get('/:page/:id', routeToController);
+    router.get('/:page/:method/:id', routeToController);
 
     function routeToController(req, res, next) {
         var page = req.params.page || defaultController || '',
-            method = req.params.method || '';
+            method = req.params.id || req.params.method || '';
 
         try {
             var controller = require('../../app/controllers/' + page);
@@ -26,7 +27,7 @@ module.exports = function(app) {
         if (controller) {
 
             // Run the given method, if there is one
-            if (false && method) {
+            if (method && controller[method]) {
 
                 if (controller[method]) {
                     controller[method](req, res);

@@ -1,7 +1,7 @@
 <header class="site__header  align-center  grid  plain--links">
 
     <div class="site__navigation  grid__item  one-third">
-        <a href="#">Start a poll</a>
+        <a href="/">Start a poll</a>
     </div><!--
 
  --><h1 class="site__title  grid__item  one-third">
@@ -9,7 +9,11 @@
     </h1><!--
 
  --><div class="site__navigation  grid__item  one-third">
-        <a href="#">Sign-up/Sign-in</a>
+    {{#if user }}
+        <a href="/auth/logout">Logout</a>
+    {{else}}
+        <a href="/user/login">Sign-in</a>
+    {{/if}}
     </div>
 
 </header><!-- site__header -->

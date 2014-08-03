@@ -82,3 +82,5 @@ body {
         pointer-events: none;
     }
         .invisible { @extend %invisible; }
+
+    .block { display: block; }

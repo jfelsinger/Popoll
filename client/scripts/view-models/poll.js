@@ -41,7 +41,7 @@ window.vue = new Vue({
 
         tinyUrl: function tinyUrl() {
             var pollId = this.poll._id || lib.getQueryValue('id');
-            return lib.minifyUrl(config.apiUrl + 'poll/' + pollId);
+            return lib.minifyUrl(/*config.apiUrl*/'http://www.poshpoll.com/' + 'poll/' + pollId);
         },
     },
 
@@ -92,13 +92,16 @@ window.vue = new Vue({
         },
 
         vote: function(choice, e) {
+            var self = this;
             e.preventDefault();
 
             pollApi.choices.vote(this.poll._id, choice._id, function(err, res) {
                 console.log(res);
-                choice.votes.push({
-                    priority: 1
-                });
+
+                if (res.ok)
+                    choice.votes.push({
+                        priority: 1
+                    });
             });
         },
 

@@ -45,7 +45,8 @@
         ));
 
         &:hover {
-            max-height: 600px;
+            background: $c-red--light;
+            cursor: pointer;
         }
     }
 
@@ -65,7 +66,6 @@
         %poll-list__options {
             font-family: $f-lato;
             font-size: .65em;
-            font-weight: 100;
             border: 2px solid $c-red--dark;
             padding: unit(.25) unit(.5);
             margin: unit(.25) 0;
@@ -80,7 +80,9 @@
 
             li {
                 margin-bottom: unit(.25);
-                &:after {
+
+
+                .bar {
                     content: "";
                     display: block;
                     width: 100%;
@@ -93,22 +95,22 @@
                 }
 
 
-                &:nth-of-type(8n+1):after {
+                &:nth-of-type(8n+1) .bar {
                     background: $c-contrast--1;
                 }
-                &:nth-of-type(8n+2):after,
-                &:nth-of-type(8n):after {
+                &:nth-of-type(8n+2) .bar,
+                &:nth-of-type(8n) .bar {
                     background: $c-contrast--2;
                 }
-                &:nth-of-type(8n+3):after,
-                &:nth-of-type(8n+7):after {
+                &:nth-of-type(8n+3) .bar,
+                &:nth-of-type(8n+7) .bar {
                     background: $c-contrast--3;
                 }
-                &:nth-of-type(8n+4):after,
-                &:nth-of-type(8n+6):after {
+                &:nth-of-type(8n+4) .bar,
+                &:nth-of-type(8n+6) .bar {
                     background: $c-contrast--4;
                 }
-                &:nth-of-type(8n+5):after {
+                &:nth-of-type(8n+5) .bar {
                     background: $c-contrast--5;
                 }
             }

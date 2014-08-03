@@ -1,0 +1,33 @@
+<h1 class="one-line">Sign-up or sign-in!</h1>
+
+<div class="grid  grid--rev">
+    <div class="grid__item  one-half  lap--one-whole  palm--one-whole">
+        <h3>Sign-in with one of these services</h3>
+
+        <a href="/auth/twitter" class="button  align-center  nudge-half--bottom  block link--plain  icon--twitter"> Twitter</a>
+        <a href="/auth/twitter" class="button  align-center  block link--plain  icon--github"> Github</a>
+
+    </div><!--
+
+ --><div class="grid__item  one-half  lap--one-whole  palm--one-whole">
+        <h3>Authenticate Locally</h3>
+
+        <form class="js-login  pad-half  border-default" action="/auth/\{{registration ? 'register' : 'login'}}" method="post">
+
+            <div v-if="registration">
+                <label class="label  clear">Username</label>
+                <input class="nudge-half--bottom  one-whole  input" name="username" placeholder="UserName">
+            </div>
+
+            <label class="label  clear">Email</label>
+            <input class="nudge-half--bottom  one-whole  input" type="email" name="email" placeholder="yourEmail@domain.com">
+
+            <label class="label  clear">Password</label>
+            <input class="nudge-half--bottom  one-whole  input" type="password" name="password" placeholder="password">
+
+            <button class="one-third  lap--two-thirds  palm--one-whole">\{{ registration ? 'Sign-up' : 'Sign-in' }}</button>
+            or
+            <a v-on="click: toggleRegistration" href="#">\{{ registration ? 'sign-in' : 'sign-up' }}</a>
+        </form>
+    </div>
+</div><!-- grid -->

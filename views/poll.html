@@ -1,6 +1,8 @@
 <div class="js-poll">
 <h2 v-text="poll.question"></h2>
 
+<p>Share it: <code>\{{ tinyUrl }}</code></p>
+
 <section class="poll__choices" data-ui-component="poll__choices">
     <h5 v-show="!poll.choices.length">There are no choices for this poll yet. Add one?</h5>
 
@@ -8,7 +10,7 @@
         <a v-on="click: choiceDelete(this, $event)" href="#" class="float-right  icon--cross  link--plain"></a>
         <div class="choice__name  float-left">\{{ name }}</div>
         <div v-class="light: votes.length == 0" class="choice__votes  float-right">\{{ votes.length ? votes.length : 'no' }} votes</div>
-        <div v-style="width: (votes.length/voteCount) * 100 + '%'" class="choice__meter  one-whole"></div>
+        <div v-style="width: (votes.length/(voteCount ? voteCount : 1)) * 100 + '%'" class="choice__meter  one-whole"></div>
     </section>
 
     <form v-on="submit: choiceSubmit">

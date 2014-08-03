@@ -9,13 +9,15 @@ module.exports.localRegister = function(req, email, password, done) {
         if (err) return done(err);
 
         if (user) {
-            return done(null, false, req.flash('signupMessage', 'A user with that email already exists'));
+            console.log('BAD!');
+            return done(null, false, { message: 'A user with that email already exists.' });
         } else {
+            console.log('GOOD!');
             var newUser = new User();
 
             newUser.username = req.body.username;
-            newUSer.email = email;
-            newUser.password = newUser.encryptPassword(password);
+            newUser.email = email;
+            newUser.password = password;
 
             newUser.save(function(err) {
                 if (err) throw err;
@@ -26,11 +28,14 @@ module.exports.localRegister = function(req, email, password, done) {
 };
 
 module.exports.localLogin = function(req, email, password, done) {
-    User.fineOne({ 'email': email }, function(err, user) {
+    User.findOne({ 'email': email }, function(err, user) {
         if (err) return done(err);
 
-        if (!user || !user.authenticate(password))
-            return done(null, false, req.flash('loginMessage', 'Invalid email or password'));
+        if (!user || !user.authenticate(password)) {
+            console.log('bad auth');
+            return done(null, false, { message: 'Wrong email or password.' });
+        }
+        console.log('good auth');
 
         return done(null, user);
     });
@@ -68,7 +73,7 @@ function findAuthenticatedUser(provider, profile, cb, done) {
     var search = {};
     search[provider + '.id'] = profile.id;
 
-    User.fineOne(search, function(err, user) {
+    User.findOne(search, function(err, user) {
 
         if (err) return done(err);
 

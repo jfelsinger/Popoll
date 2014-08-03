@@ -31,15 +31,21 @@
 
             <h4 v-if="choices.length" class="poll-list__answer  align-center">This One</h4>
 
-            <ul v-if="choices.length" class="poll-list__options  list--plain">
+            <ul v-if="choices.length" class="clear  poll-list__options  list--plain">
                 <li v-repeat="choices">
                     \{{name}}
+                    <span v-style="width: (votes.length/(voteCount ? voteCount : 1)) * 100 + '%'" class="bar"></span>
                 </li>
             </ul><!-- poll-list__options -->
 
             <p class="clear  one-line" v-if="!choices.length">
                 <small>
                     There are no choices for this poll yet. :(
+                </small>
+
+            <p class="align-right  one-line">
+                <small>
+                    <a href="/poll/\{{_id}}"> Go to poll </a>
                 </small>
         </section>
     </li>

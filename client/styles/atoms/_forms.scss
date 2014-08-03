@@ -30,6 +30,12 @@
     ));
 }
 
+%label {
+    font-size: .85em;
+    opacity: .85;
+    display: block;
+}
+
 %textarea {
     @extend %input !optional;
 
@@ -48,6 +54,8 @@
 .input { @extend %input !optional; }
 
 .textarea { @extend %textarea !optional; }
+
+.label { @extend %label !optional; }
  
  
  

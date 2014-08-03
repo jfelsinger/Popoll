@@ -51,7 +51,7 @@ PollSchema.methods = {
         var choice = this.choices.id(optionId);
 
         choice.votes.push({
-            // user: user._id,
+            user: user && user._id,
             priority: priority
         });
 

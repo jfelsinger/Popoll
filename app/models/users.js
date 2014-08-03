@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     _ = require('underscore'),
     Schema = mongoose.Schema,
     crypto = require('crypto'),
-    authType = ['github', 'facebook', 'twitter'];
+    authTypes = ['github', 'facebook', 'twitter'];
 
 var UserSchema = new Schema({
     username: String,
@@ -23,7 +23,7 @@ var UserSchema = new Schema({
 UserSchema
     .virtual('password')
     .set(function(password) {
-        this._password = password;
+        // this._password = password;
         this.salt = this.makeSalt();
         this.hashed_password = this.encryptPassword(password);
     })
@@ -33,23 +33,29 @@ var validatePresenceOf = function(value) {
     return value && value.length;
 };
 
-UserSchema.path('username').validate(function(name) {
+UserSchema.path('username').validate(function(username) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
+
     return username.length;
 }, 'Username cannot be blank');
 
-UserSchema.path('email').validate(function(name) {
+UserSchema.path('email').validate(function(email) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
+
     return email.length;
 }, 'Email cannot be blank');
 
+/*
 UserSchema.path('name').validate(function(name) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
+
     return name.length;
 }, 'Name cannot be blank');
+*/
 
-UserSchema.path('hashed_password').validate(function(name) {
+UserSchema.path('hashed_password').validate(function(hashed_password) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
+
     return hashed_password.length;
 }, 'Password cannot be blank');
 

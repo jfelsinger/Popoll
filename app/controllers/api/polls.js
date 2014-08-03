@@ -46,6 +46,7 @@ exports.post = function(req, res) {
 
     Poll.create({
         question: req.body.question,
+        user: req.user && req.user._id,
         desc: req.body.desc
     }, function(err, poll) {
         if (err) res.send(500, err);
@@ -155,8 +156,9 @@ choices.vote = function(req, res) {
             if (err) res.send(500, err);
 
 
+
             poll.vote(
-                req.params.option_id, {}, 1,
+                req.params.option_id, req.user, 1,
                 function(err) {
                     if (err) res.send(500, err);
                     res.json(201, { message: 'Vote added!' });
@@ -215,7 +217,8 @@ comments.post = function(req, res) {
             if (err) res.send(500, err);
 
             var comment = {
-                body: req.body.body
+                body: req.body.body,
+                user: req.user && req.user._id,
             };
 
             poll.comments.push(comment);
@@ -224,7 +227,8 @@ comments.post = function(req, res) {
                 if (err) res.send(500, err);
                 res.json(201, { 
                     message: 'Comments created!',
-                    id: poll.comments[poll.comments.length-1]._id
+                    id: poll.comments[poll.comments.length-1]._id,
+                    user: req.user
                 });
             });
         });

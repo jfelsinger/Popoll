@@ -19,11 +19,13 @@
     Base
 \*-------------------------------------*/
 
+%pad         { padding:         unit(); }
 %pad--top    { padding-top:     unit(); }
 %pad--right  { padding-right:   unit(); }
 %pad--bottom { padding-bottom:  unit(); }
 %pad--left   { padding-left:    unit(); }
  
+%pad-half         { padding:         unit(.5); }
 %pad-half--top    { padding-top:     unit(.5); }
 %pad-half--right  { padding-right:   unit(.5); }
 %pad-half--bottom { padding-bottom:  unit(.5); }
@@ -37,11 +39,13 @@
     Implementation
 \*-------------------------------------*/
 
+.pad         { @extend %pad;            }
 .pad--top    { @extend %pad--top;       }
 .pad--right  { @extend %pad--right;     }
 .pad--bottom { @extend %pad--bottom;    }
 .pad--left   { @extend %pad--left;      }
 
+.pad-half         { @extend %pad-half;          }
 .pad-half--top    { @extend %pad-half--top;     }
 .pad-half--right  { @extend %pad-half--right;   }
 .pad-half--bottom { @extend %pad-half--bottom;  }

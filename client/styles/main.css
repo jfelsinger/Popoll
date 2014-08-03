@@ -1585,6 +1585,12 @@ th {
     
  * 
  */
+/* line 15, quarks/_borders.scss */
+.border-default {
+  border: 4px solid #c93838;
+  border-radius: 6px;
+}
+
 /*-------------------------------------*\
     ICONS
 \*-------------------------------------*/
@@ -1986,6 +1992,11 @@ body {
   pointer-events: none;
 }
 
+/* line 86, utilities/_global.scss */
+.block {
+  display: block;
+}
+
 /*-------------------------------------*\
     ALIGNMENT
 \*-------------------------------------*/
@@ -2155,41 +2166,51 @@ body {
     Base
 \*-------------------------------------*/
 /* line 22, utilities/_pad.scss */
+.pad {
+  padding: 42.068px;
+}
+
+/* line 23, utilities/_pad.scss */
 .pad--top {
   padding-top: 42.068px;
 }
 
-/* line 23, utilities/_pad.scss */
+/* line 24, utilities/_pad.scss */
 .pad--right {
   padding-right: 42.068px;
 }
 
-/* line 24, utilities/_pad.scss */
+/* line 25, utilities/_pad.scss */
 .pad--bottom {
   padding-bottom: 42.068px;
 }
 
-/* line 25, utilities/_pad.scss */
+/* line 26, utilities/_pad.scss */
 .pad--left {
   padding-left: 42.068px;
 }
 
-/* line 27, utilities/_pad.scss */
+/* line 28, utilities/_pad.scss */
+.pad-half {
+  padding: 21.034px;
+}
+
+/* line 29, utilities/_pad.scss */
 .pad-half--top {
   padding-top: 21.034px;
 }
 
-/* line 28, utilities/_pad.scss */
+/* line 30, utilities/_pad.scss */
 .pad-half--right {
   padding-right: 21.034px;
 }
 
-/* line 29, utilities/_pad.scss */
+/* line 31, utilities/_pad.scss */
 .pad-half--bottom {
   padding-bottom: 21.034px;
 }
 
-/* line 30, utilities/_pad.scss */
+/* line 32, utilities/_pad.scss */
 .pad-half--left {
   padding-left: 21.034px;
 }
@@ -2458,6 +2479,13 @@ a {
 }
 
 /* line 33, atoms/_forms.scss */
+.label {
+  font-size: .85em;
+  opacity: .85;
+  display: block;
+}
+
+/* line 39, atoms/_forms.scss */
 .textarea {
   font-size: .75em;
   min-height: 147.238px;
@@ -2541,26 +2569,26 @@ a {
 }
 /* line 47, molecules/_poll-list.scss */
 .poll-list__item:hover, .poll__choice:hover {
-  max-height: 600px;
+  background: #e15864;
+  cursor: pointer;
 }
 
-/* line 52, molecules/_poll-list.scss */
+/* line 53, molecules/_poll-list.scss */
 .poll-list__item--closed {
   max-height: 64px;
 }
 
-/* line 56, molecules/_poll-list.scss */
+/* line 57, molecules/_poll-list.scss */
 .poll-list__question {
   padding: 0;
   margin: 0;
   text-shadow: 0 1px 1px #b03535;
 }
 
-/* line 65, molecules/_poll-list.scss */
+/* line 66, molecules/_poll-list.scss */
 .poll-list__options {
   font-family: "Lato", arial, sans-serif;
   font-size: .65em;
-  font-weight: 100;
   border: 2px solid #c93838;
   padding: 10.517px 21.034px;
   margin: 10.517px 0;
@@ -2572,8 +2600,8 @@ a {
 .poll-list__options li {
   margin-bottom: 10.517px;
 }
-/* line 83, molecules/_poll-list.scss */
-.poll-list__options li:after {
+/* line 85, molecules/_poll-list.scss */
+.poll-list__options li .bar {
   content: "";
   display: block;
   width: 100%;
@@ -2582,40 +2610,40 @@ a {
   -webkit-box-shadow: 0 1px 2px #c03a3a;
   box-shadow: 0 1px 2px #c03a3a;
 }
-/* line 96, molecules/_poll-list.scss */
-.poll-list__options li:nth-of-type(8n+1):after {
+/* line 98, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+1) .bar {
   background: #bb56af;
 }
-/* line 99, molecules/_poll-list.scss */
-.poll-list__options li:nth-of-type(8n+2):after, .poll-list__options li:nth-of-type(8n):after {
+/* line 101, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+2) .bar, .poll-list__options li:nth-of-type(8n) .bar {
   background: #aa56af;
 }
-/* line 103, molecules/_poll-list.scss */
-.poll-list__options li:nth-of-type(8n+3):after, .poll-list__options li:nth-of-type(8n+7):after {
+/* line 105, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+3) .bar, .poll-list__options li:nth-of-type(8n+7) .bar {
   background: #7c6daf;
 }
-/* line 107, molecules/_poll-list.scss */
-.poll-list__options li:nth-of-type(8n+4):after, .poll-list__options li:nth-of-type(8n+6):after {
+/* line 109, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+4) .bar, .poll-list__options li:nth-of-type(8n+6) .bar {
   background: #818fb0;
 }
-/* line 111, molecules/_poll-list.scss */
-.poll-list__options li:nth-of-type(8n+5):after {
+/* line 113, molecules/_poll-list.scss */
+.poll-list__options li:nth-of-type(8n+5) .bar {
   background: #7c99af;
 }
 
-/* line 117, molecules/_poll-list.scss */
+/* line 119, molecules/_poll-list.scss */
 .poll-list__answer {
   font-weight: normal;
   padding: 0;
   margin: 0;
 }
 
-/* line 123, molecules/_poll-list.scss */
+/* line 125, molecules/_poll-list.scss */
 .poll-list__actions {
   color: #333;
 }
 
-/* line 127, molecules/_poll-list.scss */
+/* line 129, molecules/_poll-list.scss */
 .poll-list__time {
   color: #fff;
   padding: 2.62925px 6.3102px;
@@ -2625,7 +2653,7 @@ a {
   box-shadow: 0 1px #ea930e;
 }
 
-/* line 136, molecules/_poll-list.scss */
+/* line 138, molecules/_poll-list.scss */
 .poll-list__watch {
   padding: 10.517px;
 }

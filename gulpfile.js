@@ -206,7 +206,7 @@ gulp.task('app', ['lint'], function() {
             debug: true,
             delayTime: 1,
             env: {
-                PORT: 3000
+                PORT: 8080
             },
         })
         .on('restart', ['test']);

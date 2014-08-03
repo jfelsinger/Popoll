@@ -5,9 +5,12 @@ exports.render = function(req, res) {
 
     res.header('Access-Control-Allow-Origin', '*');
 
+    console.log(req.user);
+
     var data = {
-        vm: 'index'
+        vm: 'index',
+        user: req.user,
     };
 
-    res.render('index.html');
+    res.render('index.html', data);
 };

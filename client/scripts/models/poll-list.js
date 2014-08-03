@@ -25,7 +25,12 @@ module.exports = new Vue({
 
                 self.polls.forEach(function(poll) {
                     poll.open = false;
+                    poll.voteCount = poll.choices.reduce(function(prev, current) {
+                        if (!(current && current.votes))
+                            return prev;
 
+                        return prev + current.votes.length;
+                    }, 0);
                 });
             });
         },

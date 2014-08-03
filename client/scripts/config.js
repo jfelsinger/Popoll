@@ -10,7 +10,7 @@
 
 module.exports = {
     // Popollo REST-api location
-    apiUrl: 'http://localhost:3000/api/',
+    apiUrl: 'http://localhost:8080/api/',
 
     // Tiny.cc api settings
     tinycc: {
